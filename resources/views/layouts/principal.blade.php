@@ -56,8 +56,8 @@
         <div class="navbar-wrapper">
             <div class="navbar-header">
                 <ul class="nav navbar-nav flex-row">
-                    <li class="nav-item mobile-menu d-lg-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
-                    <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="modern admin logo" src="{{asset("images/logo/logo.png")}}">
+                    <li class="nav-item mobile-menu d-lg-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="/welcome/1"><i class="ft-menu font-large-1"></i></a></li>
+                    <li class="nav-item mr-auto"><a class="navbar-brand" href="/welcome/1"><img class="brand-logo" alt="modern admin logo" src="{{asset("images/logo/logo.png")}}">
                             <h3 class="brand-text">SIG-FAUNA</h3>
                         </a></li>
                     <li class="nav-item d-none d-lg-block nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="toggle-icon ft-toggle-right font-medium-3 white" data-ticon="ft-toggle-right"></i></a></li>
@@ -84,65 +84,9 @@
 
                     </ul>
                     <ul class="nav navbar-nav float-right">
-                        <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-gb"></i><span class="selected-language"></span></a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown-flag"><a class="dropdown-item" href="#" data-language="en"><i class="flag-icon flag-icon-us"></i> English</a><a class="dropdown-item" href="#" data-language="fr"><i class="flag-icon flag-icon-fr"></i> French</a><a class="dropdown-item" href="#" data-language="pt"><i class="flag-icon flag-icon-pt"></i> Portuguese</a><a class="dropdown-item" href="#" data-language="de"><i class="flag-icon flag-icon-de"></i> German</a></div>
-                        </li>
-                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="material-icons">notifications_none</i><span class="badge badge-pill badge-danger badge-up badge-glow">5</span></a>
-                            <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
-                                <li class="dropdown-menu-header">
-                                    <h6 class="dropdown-header m-0"><span class="grey darken-2">Notifications</span></h6><span class="notification-tag badge badge-danger float-right m-0">5 New</span>
-                                </li>
-                                <li class="scrollable-container media-list w-100"><a href="javascript:void(0)">
-                                        <div class="media">
-                                            <div class="media-left align-self-center"><i class="material-icons icon-bg-circle bg-cyan mr-0">add_box</i></div>
-                                            <div class="media-body">
-                                                <h6 class="media-heading">You have new order!</h6>
-                                                <p class="notification-text font-small-3 text-muted">Lorem ipsum dolor sit amet, consectetuer elit.</p><small>
-                                                    <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">30 minutes ago</time></small>
-                                            </div>
-                                        </div>
-                                    </a><a href="javascript:void(0)">
-                                        <div class="media">
-                                            <div class="media-left align-self-center"><i class="material-icons icon-bg-circle bg-red bg-darken-1">cloud_download</i></div>
-                                            <div class="media-body">
-                                                <h6 class="media-heading red darken-1 mr-0">99% Server load</h6>
-                                                <p class="notification-text font-small-3 text-muted">Aliquam tincidunt mauris eu risus.</p><small>
-                                                    <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Five hour ago</time></small>
-                                            </div>
-                                        </div>
-                                    </a><a href="javascript:void(0)">
-                                        <div class="media">
-                                            <div class="media-left align-self-center"><i class="material-icons icon-bg-circle bg-yellow bg-darken-3">warning</i></div>
-                                            <div class="media-body">
-                                                <h6 class="media-heading yellow darken-3 mr-0">Warning notifixation</h6>
-                                                <p class="notification-text font-small-3 text-muted">Vestibulum auctor dapibus neque.</p><small>
-                                                    <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Today</time></small>
-                                            </div>
-                                        </div>
-                                    </a><a href="javascript:void(0)">
-                                        <div class="media">
-                                            <div class="media-left align-self-center"><i class="material-icons icon-bg-circle bg-cyan mr-0">check_circle</i></div>
-                                            <div class="media-body">
-                                                <h6 class="media-heading">Complete the task</h6><small>
-                                                    <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Last week</time></small>
-                                            </div>
-                                        </div>
-                                    </a><a href="javascript:void(0)">
-                                        <div class="media">
-                                            <div class="media-left align-self-center"><i class="material-icons icon-bg-circle bg-teal mr-0">insert_drive_file</i></div>
-                                            <div class="media-body">
-                                                <h6 class="media-heading">Generate monthly report</h6><small>
-                                                    <time class="media-meta text-muted" datetime="2015-06-11T18:29:20+08:00">Last month</time></small>
-                                            </div>
-                                        </div>
-                                    </a></li>
-                                <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all notifications</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="mr-1 user-name text-bold-700">John Doe</span><span class="avatar avatar-online"><img src="{{asset("images/portrait/small/avatar-s-19.png")}}" alt="avatar"><i></i></span></a>
+                        <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="mr-1 user-name text-bold-700">Bem Vindo(a), Utilizador</span><span class="avatar avatar-online"><img src="{{asset("images/portrait/small/user_male.png")}}" alt="avatar"><i></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="material-icons">person_outline</i> Edit Profile</a>
-                                <div class="dropdown-divider"></div><a class="dropdown-item" href="login-with-bg-image.html"><i class="material-icons">power_settings_new</i> Logout</a>
+                                <div class="dropdown-divider"></div><a class="dropdown-item" href="{{route('logout')}}" onclick="showSwal('auto-close')"><i class="material-icons">power_settings_new</i> Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -159,8 +103,12 @@
 
         <div class="main-menu-content">
             <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-
-
+                <li class="active">
+                    <a href="/welcome/1">
+                        <i class="la la-desktop"></i>
+                        <span class="menu-title" data-i18n="Crypto Dashboard">WorkSpace</span>
+                    </a>
+                </li>
 
                 <li class=" nav-item"><a href="#"><i class="material-icons">straighten</i><span class="menu-title" data-i18n="Material Components">Áreas de Conservação</span></a>
                     <ul class="menu-content">
@@ -173,7 +121,7 @@
 
                     </ul>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="material-icons">view_list</i><span class="menu-title" data-i18n="Components">Animal</span></a>
+                <li class=" nav-item"><a href="dashboard-sales.html"><i class="material-icons">view_list</i><span class="menu-title" data-i18n="Components">Animal</span></a>
                     <ul class="menu-content">
                         <li><a class="menu-item" href="component-alerts.html"><i class="material-icons"></i><span data-i18n="Alerts">Cadastrar</span></a>
                         </li>
@@ -275,6 +223,9 @@
     <!-- BEGIN: Page JS-->
     <script src="{{asset("js/scripts/pages/material-app.js")}}"></script>
     <script src="{{asset("js/scripts/pages/dashboard-ecommerce.js")}}"></script>
+    <script type="text/javascript">
+        var URL_SITE = '" . URL::to('/') . "'
+    </script>
     <!-- END: Page JS-->
 
 </body>

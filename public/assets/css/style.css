@@ -1,0 +1,454 @@
+/*================================================================================
+	Item Name: Modern Admin - Clean Bootstrap 4 Dashboard HTML Template
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+/* Fonts */
+@font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 300;
+	src: url('../fonts/Open_Sans/OpenSans-LightItalic.ttf');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 400;
+	src: url('../fonts/Open_Sans/OpenSans-Italic.ttf');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 600;
+	src: url('../fonts/Open_Sans/OpenSans-SemiBoldItalic.ttf');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 700;
+	src: url('../fonts/Open_Sans/OpenSans-BoldItalic.ttf');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 800;
+	src: url('../fonts/Open_Sans/OpenSans-ExtraBoldItalic.ttf');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 300;
+	src: url('../fonts/Open_Sans/OpenSans-Light.ttf');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/Open_Sans/OpenSans-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 600;
+	src: url('../fonts/Open_Sans/OpenSans-SemiBold.ttf');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 700;
+	src: url('../fonts/Open_Sans/OpenSans-Bold.ttf');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 800;
+	src: url('../fonts/Open_Sans/OpenSans-ExtraBold.ttf');
+}
+
+@font-face {
+	font-family: 'Quicksand';
+	font-style: normal;
+	font-weight: 300;
+	src: url('../fonts/Quicksand/static/Quicksand-Light.ttf');
+}
+
+@font-face {
+	font-family: 'Quicksand';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/Quicksand/static/Quicksand-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'Quicksand';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/Quicksand/static/Quicksand-Medium.ttf');
+}
+
+@font-face {
+	font-family: 'Quicksand';
+	font-style: normal;
+	font-weight: 600;
+	src: url('../fonts/Quicksand/static/Quicksand-SemiBold.ttf');
+}
+
+@font-face {
+	font-family: 'Quicksand';
+	font-style: normal;
+	font-weight: 700;
+	src: url('../fonts/Quicksand/static/Quicksand-Bold.ttf');
+}
+/* Fonts End */;
+
+@media print {
+	@page {
+		margin-top: 0 !important;
+		margin-bottom: 0 !important;
+	}
+
+	#sigarq-app {
+		display: none !important;
+	}
+
+	#sigarq-print {
+		display: block !important;
+	}
+
+}
+
+/**
+ * Loading App CSS
+ * @author erosario
+ */
+#sgq-app-loading-page {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    z-index: 99999999;
+    background: rgb(255, 255, 255, 65%);
+    backdrop-filter: blur( 6px );
+    -webkit-backdrop-filter: blur( 6px );
+	-webkit-transition: all .4s ease;
+	-moz-transition: all .4s ease;
+	-ms-transition: all .4s ease;
+	-o-transition: all .4s ease;
+	transition: all .4s ease;
+}
+
+#sgq-app-loading-page.loaded {
+    visibility: hidden;
+    opacity: 0;
+    background: rgb(255, 255, 255, 0%);
+    backdrop-filter: blur( 0px );
+    -webkit-backdrop-filter: blur( 0px );
+}
+
+#sgq-app-loading-page.loaded.hidden {
+    width: 0% !important;
+    height: 0% !important;
+    display: block !important;
+}
+
+.sgq-lp-app-logo {
+	width: 320px;
+}
+
+.sgq-lp-app-spinner {
+	animation-delay: 0.3s;
+}
+
+.sgq-lp-app-spinner.zoomOut {
+	animation-delay: 0s;
+}
+
+.sgq-lp-app-spinner-animated {
+    font-size: 1.4rem;
+    width: 48px;
+    height: 48px;
+    color: #0060ca !important;
+}
+/* END: Loading App CSS */
+
+#sigarq-app {
+	display: block;
+}
+
+#sigarq-print {
+	display: none;
+}
+
+.brand-logo {
+	fill: #fff;
+}
+
+.card.details-card {
+	border: 1px solid black;
+	border-radius: 20px;
+}
+
+.dropdown-item:active {
+	color: transparent !important;
+	text-decoration: none;
+	background-color: transparent !important;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+	color:transparent !important;
+	text-decoration: none;
+	background-color: transparent !important;
+}
+
+.center-modal {
+	display: flex !important;
+	align-items: center !important;
+	height: calc(100vh - 3.5rem) !important;
+}
+
+.form-group-flex {
+	flex-direction: row !important;
+	flex-wrap: unset !important;
+}
+
+.input-border {
+	border: 2px solid #000;
+	border-radius: 6px;
+}
+
+.w-30 {
+	width: 36% !important;
+}
+
+.input-font-bolder1 {
+	color: #000;
+	font-size: 2em;
+	font-weight: bolder;
+    text-align: center; 
+}
+.input-font-bolder {
+	color: #000;
+	font-size: 2em;
+	font-weight: bolder;
+    /* text-align: center; */
+}
+.box-input-bolder1 {
+	color: #000;
+	font-size: 2em;
+	font-weight: bolder;
+     text-align: center;
+}
+.box-input-bolder {
+	color: #000;
+	font-size: 2em;
+	font-weight: bolder;
+    
+}
+
+.apexcharts-tooltip, .apexcharts-xaxistooltip, .apexcharts-menu-item, .apexcharts-yaxistooltip {
+    color: #fff !important;
+	font-size: 1.5em !important;
+	font-weight: bolder;
+}
+
+.ui-datepicker-calendar {
+	display: none;
+}
+.ui-datepicker-month {
+	display: none;
+}
+.ui-datepicker-next,.ui-datepicker-prev {
+ display:none;
+}
+
+/* Header Styles */
+#sgq-global-searchbox {
+	width: 360px;
+	border-bottom-width: 0px !important;
+	transition: all .3s ease;
+}
+
+#sgq-global-searchbox:focus,
+#sgq-global-searchbox.opened {
+    width: 540px;
+    border-bottom-width: 1px !important;
+    border-bottom-style: solid !important;
+    border-bottom-color: #1e9ff2!important;
+    box-shadow: 1px 1px 4px rgb(0 0 0 / 15%);
+}
+
+#sgq-global-searchBar-overlayer {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    position: absolute;
+	opacity: 0;
+	visibility: hidden;
+    background: rgba( 255, 255, 255, 0.0 );
+    backdrop-filter: blur( 0px );
+    -webkit-backdrop-filter: blur( 0px );
+	transition: all .5s ease;
+}
+
+#sgq-global-searchBar-overlayer.showing {
+    z-index: 9;
+    position: absolute;
+	opacity: 1;
+	visibility: visible;
+    background: rgba( 255, 255, 255, 0.25 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+}
+
+.sgq-gSB-history .list-group-item:first-child {
+    border-top-left-radius: 0rem !important;
+    border-top-right-radius: 0rem !important;
+}
+
+.sgq-gSB-history .list-group-item:last-child {
+    border-bottom: 0rem !important;
+}
+
+.sgq-gSB-history .list-group-item {
+    border-left: 0 !important;
+    border-right: 0 !important;
+}
+
+.sgq-gSB-results-overlay {
+	z-index: 1000;
+	opacity: 1;
+	visibility: visible;
+	background: rgba( 255, 255, 255, 0.4 );
+    backdrop-filter: blur( 6px );
+    -webkit-backdrop-filter: blur( 6px );
+	transition: all .25s ease;
+}
+
+.sgq-gSB-results-overlay[sgq-data-handle-overlay="hide"] {
+	z-index: -1;
+	opacity: 0;
+	visibility: hidden;
+	background: rgba( 255, 255, 255, 0 );
+    backdrop-filter: blur( 0px );
+    -webkit-backdrop-filter: blur( 0px );
+}
+
+.sgq-gSB-results-returned-item .rr-item-box {
+	transition: all .2s ease;
+	cursor: pointer;
+}
+
+.sgq-gSB-results-returned-item .rr-item-box:hover {
+	transition: all .32s ease;
+	transform: scale(1.06);
+	box-shadow: 0 0.125rem 1rem rgb(0, 0, 0, .10) !important;
+
+}
+
+[sgq-data-returned="boxes"] .sgq-gSB-results-returned-item .rr-item-box:hover {
+	border: 1px solid #1e9ff2 !important;
+}
+
+[sgq-data-returned="folders"] .sgq-gSB-results-returned-item .rr-item-box:hover {
+	border: 1px solid #666ee8 !important;
+}
+
+[sgq-data-returned="documents"] .sgq-gSB-results-returned-item .rr-item-box:hover {
+	border: 1px solid #6b6f82 !important;
+}
+
+.sgq-gSB-results-returned-item .rr-item-box:active {
+	transition: all .2s ease;
+	border-left: 0 !important;
+	border-right: 0 !important;
+	transform: scale(.95);
+}
+
+#sgq-global-searchBar-modal {
+    top: 0;
+    left: 0;
+    z-index: 9999;
+	visibility: hidden;
+    background-color: rgb(0, 0, 0, 0%);
+    backdrop-filter: blur( 0px );
+	-webkit-backdrop-filter: blur( 0px );
+	transition: all .2s ease;
+}
+
+#sgq-global-searchBar-modal[hidding] {
+    display: none;
+}
+
+#sgq-global-searchBar-modal[opened] {
+    z-index: 999999;
+	visibility: visible;
+    background-color: rgb(0, 0, 0,39%);
+    backdrop-filter: blur( 6px );
+	-webkit-backdrop-filter: blur( 6px );
+	transition: all .3s ease;
+}
+
+.sgq-gSB-modal-box {
+    background-color: rgb(255 255 255 / 89%) !important;
+    backdrop-filter: blur( 28px ) !important;
+	-webkit-backdrop-filter: blur( 28px );
+    border-radius: 14px !important;
+    box-shadow: 0px 4px 10px 7px rgb(0 0 0 / 10%);
+    overflow: hidden;
+	max-width: 1600px;
+	transition: all .3s ease;
+}
+
+.sgq-global-searchbox {
+	transition: all .28s ease;
+}
+
+.sgq-gSB-folder-list-item.active {
+    background-color: rgb(0 0 0 / 10%);
+}
+
+#sgq-gSB-button-open-document.comming-soon:before {
+    content: 'Novo';
+    position: absolute;
+    top: -12px;
+    right: -16px;
+    z-index: 10;
+    background-color: #ff1635;
+    border-radius: 2px;
+    padding: 2px 6px;
+}
+
+.sgq-gSB-folder-list-item,
+.sgq-gSB-list-document-item {
+	cursor: pointer !important;
+	transition: all .22s ease;
+}
+
+.sgq-gSB-folder-list-item:hover {
+	background-color: rgb(255, 255, 255, 85%);
+	transition: all .3s ease;
+	transform: scale(1.1);
+}
+
+.sgq-gSB-folder-list-item:active {
+	background-color: rgb(0, 0, 0);
+	transition: all .2s ease;
+	transform: scale(.9);
+}

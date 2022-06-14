@@ -1,0 +1,35 @@
+/* Bootstrap: configs */
+.btn-primary {
+    border-color: #0f5a37 !important;
+    background-color: #0f5a37 !important;
+    color: #FFFFFF;
+}
+
+.text-primary {
+    color: #0667dd !important;
+}
+/* End Bootstrap: configs */
+
+.sgq-login-box,
+.sgq-copyright-box {
+    min-width: 348px;
+    max-width: 348px;
+}
+
+.sgq-loading-status {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-size: 1em !important;
+}
+
+.sgq-ls-text {
+    display: block;
+}
+
+.sgq-loading-status .sgq-ls-spinner {
+    width: 32px !important;
+    height: 32px !important;
+    border-style: solid !important;
+    border-width: 0.25em !important;
+}

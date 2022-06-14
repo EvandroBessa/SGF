@@ -1,0 +1,4 @@
+html body.bg-full-screen-image {
+    background: url(../img/floresta.jpg) no-repeat center center fixed !important;
+    background-size: cover;
+}
