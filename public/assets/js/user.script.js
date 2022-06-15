@@ -1,15 +1,17 @@
 $(function () {
 
   $("#register-user").on("click", function () {
+
     $("#user-container").removeClass("hidden");
     $("#box-row").addClass("hidden");
-    $("#box-container").addClass("hidden");
-    $('#userStatsContainer').addClass('hidden');
-    $('#provinceStatsContainer').addClass('hidden');
-    $('#globalGraphContainer').addClass('hidden');
-    $('#monthlyStatsContainer').addClass('hidden');
-    $('#monthlyUserStatsContainer').addClass('hidden');
-    $('#provinceUserStatsContainer').addClass('hidden');
+
+    // $("#box-container").addClass("hidden");
+    // $('#userStatsContainer').addClass('hidden');
+    // $('#provinceStatsContainer').addClass('hidden');
+    // $('#globalGraphContainer').addClass('hidden');
+    // $('#monthlyStatsContainer').addClass('hidden');
+    // $('#monthlyUserStatsContainer').addClass('hidden');
+    // $('#provinceUserStatsContainer').addClass('hidden');
 
   });
 
@@ -63,7 +65,7 @@ $(function () {
 
     // Should create or update on save
     (formType === 'create') ? createUser(UserFormData) : updateUser(UserFormData);
-    
+
   });
 
   function createUser(UserFormData){
@@ -199,11 +201,62 @@ $(function () {
   }
 
   function getUsers() {
-    const isAdmin = (document.cookie.indexOf('Administrador') !== -1);
+    // const isAdmin = (document.cookie.indexOf('Administrador') !== -1);
 
-    isAdmin ? getVerifierUsers() : getDigitizerUsers();
-    
+    // isAdmin ? getVerifierUsers() : getDigitizerUsers();
+
+    getAllUsers();
+
   }
+
+
+
+  function getAllUsers() {
+    $.ajax({
+      type: "GET",
+      url: "{{route('contalistar')}}",
+      data: {},
+      dataType: "json",
+      success: function (response) {
+
+        console.log("VERRRRRRR",response);
+
+        if (response.user) {
+          let users = [];
+
+          destroyTable();
+
+          response.user.map((user, index) => {
+            let editBtn = `<i class="ft-edit edit-user" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}"
+                            data-profile="${user.Designacao}" data-status="${user.Estado}" data-toggle="modal" data-target="#xlarge-user" title="Editar"></i>`;
+            let editPwdBtn = `<i class="ft-lock edit-pwd ml-1" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}"
+                            data-profile="${user.Designacao}" data-status="${user.Estado}" data-toggle="modal" data-target="#edit-pwd" title="Alterar Senha"></i>`;
+
+            users.push({user, editBtn, editPwdBtn});
+          });
+
+          renderTable(users);
+
+          editUser();
+        }
+      },error: function (error) {
+        var timerErrorMessage = setTimeout(function () {
+            setLoadingStatusMessage('Erro: Aplicação Offline!');
+            clearTimeout(timerErrorMessage);
+        }, timerDuration);
+
+        var timer = setTimeout(function () {
+            hideLoadingStatus();
+            clearTimeout(timer);
+        }, timerDuration * 2);
+
+        toastr.error("Ocorreu um erro no Sistema, por favor, contacte a assistência técnica para a melhor resolução do provlema.", "Uupppps!", { timeOut: 10000 });
+        console.log("error: ", error);
+    }
+    });
+  }
+
+
 
   function getDigitizerUsers() {
     $.ajax({
@@ -218,13 +271,13 @@ $(function () {
           destroyTable();
 
           response.user.map((user, index) => {
-            let editBtn = `<i class="ft-edit edit-user" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}" 
+            let editBtn = `<i class="ft-edit edit-user" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}"
                             data-profile="${user.Designacao}" data-status="${user.Estado}" data-toggle="modal" data-target="#xlarge-user" title="Editar"></i>`;
-            
-            let editPwdBtn = `<i class="ft-lock edit-pwd ml-1" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}" 
+
+            let editPwdBtn = `<i class="ft-lock edit-pwd ml-1" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}"
                               data-profile="${user.Designacao}" data-status="${user.Estado}" data-toggle="modal" data-target="#edit-pwd" title="Alterar Senha"></i>`;
 
-            users.push({user, editBtn, editPwdBtn});                
+            users.push({user, editBtn, editPwdBtn});
           });
 
           renderTable(users);
@@ -249,9 +302,9 @@ $(function () {
           destroyTable();
 
           response.user.map((user, index) => {
-            let editBtn = `<i class="ft-edit edit-user" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}" 
+            let editBtn = `<i class="ft-edit edit-user" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}"
                             data-profile="${user.Designacao}" data-status="${user.Estado}" data-toggle="modal" data-target="#xlarge-user" title="Editar"></i>`;
-            let editPwdBtn = `<i class="ft-lock edit-pwd ml-1" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}" 
+            let editPwdBtn = `<i class="ft-lock edit-pwd ml-1" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}"
                             data-profile="${user.Designacao}" data-status="${user.Estado}" data-toggle="modal" data-target="#edit-pwd" title="Alterar Senha"></i>`;
 
             users.push({user, editBtn, editPwdBtn});
@@ -297,11 +350,11 @@ $(function () {
                     {
                         const { Nome } = row.user;
 
-                        if(Nome === "Teste") 
+                        if(Nome === "Teste")
                           return row.editPwdBtn
-                        else 
+                        else
                           return row.editBtn+' '+row.editPwdBtn;
-                    } 
+                    }
                   }
               ],
               "columnDefs": [
@@ -310,7 +363,7 @@ $(function () {
               ],
               "rowCallback": function( row, data ) {
                 const { Estado } = data.user;
-  
+
                 if(Estado === 'Inactivo')
                   $('td', row).eq(3).html(`<span class="position-relative badge badge-danger badge-pill ml-2">${Estado}</span>`);
                 else
@@ -336,8 +389,8 @@ $(function () {
     userTable.destroy();
   }
 
-  $("#logout").on('click', function () { 
-      
+  $("#logout").on('click', function () {
+
         $.ajax({
         type: "POST",
         contentType: "application/json",
@@ -428,7 +481,7 @@ $(function () {
         $('#user-form').append(`<input type="hidden" id="edit-userId" name="edit-UserId" value="${id}"/>`);
 
     });
-    
+
   }
 
   function resetUserModal(){
@@ -442,7 +495,7 @@ $(function () {
     });
   }
 
-  if((document.cookie.indexOf('Administrador') !== -1) || (document.cookie.indexOf('AdminDigitalizacao') !== -1)) { 
+  if((document.cookie.indexOf('Administrador') !== -1) || (document.cookie.indexOf('AdminDigitalizacao') !== -1)) {
     getUsers();
   }
 

@@ -17,15 +17,23 @@
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset("vendors/css/material-vendors.min.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("vendors/css/extensions/toastr.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("vendors/css/forms/icheck/icheck.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("vendors/css/forms/toggle/switchery.min.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("vendors/css/ui/jquery-ui.min.css")}}">
     <link rel="stylesheet" type="text/css" href="{{asset("vendors/css/weather-icons/climacons.min.css")}}">
     <link rel="stylesheet" type="text/css" href="{{asset("fonts/meteocons/style.css")}}">
     <link rel="stylesheet" type="text/css" href="{{asset("vendors/css/charts/morris.css")}}">
     <link rel="stylesheet" type="text/css" href="{{asset("vendors/css/charts/chartist.css")}}">
     <link rel="stylesheet" type="text/css" href="{{asset("vendors/css/charts/chartist-plugin-tooltip.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("vendors/css/cryptocoins/cryptocoins.css")}}">
+
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset("css/material.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("css/plugins/animate/animate.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("css/plugins/animate/4.1.1/animate.min.css")}}">
     <link rel="stylesheet" type="text/css" href="{{asset("css/components.css")}}">
     <link rel="stylesheet" type="text/css" href="{{asset("css/bootstrap-extended.css")}}">
     <link rel="stylesheet" type="text/css" href="{{asset("css/material-extended.css")}}">
@@ -35,14 +43,31 @@
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset("css/core/menu/menu-types/material-vertical-menu-modern.css")}}">
     <link rel="stylesheet" type="text/css" href="{{asset("fonts/simple-line-icons/style.css")}}">
-    <link rel="stylesheet" type="text/css" href="{{asset("core/colors/palette-gradient.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("css/core/colors/palette-gradient.css")}}">
     <link rel="stylesheet" type="text/css" href="{{asset("css/pages/timeline.css")}}">
     <link rel="stylesheet" type="text/css" href="{{asset("css/pages/dashboard-ecommerce.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("css/bootstrap.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("css/bootstrap-extended.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("css/colors.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("css/components.css")}}">
+
+    <link rel="stylesheet" type="text/css" href="{{asset("css-rtl/plugins/extensions/toastr.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("css/plugins/forms/switch.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("vendors/css/tables/datatable/datatables.min.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("fonts/simple-line-icons/style.min.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("css/plugins/loaders/loaders.min.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("css/plugins/ui/jqueryui.css")}}">
+
+
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset("assets/css/style.css")}}">
     <!-- END: Custom CSS-->
+
+    <!-- Page: WorkSpace-->
+    <link rel="stylesheet" type="text/css" href="{{asset("assets/css/workspace.layout.css")}}">
+    <link rel="stylesheet" type="text/css" href="{{asset("assets/css/yearpicker.css")}}">
 
 </head>
 <!-- END: Head-->
@@ -57,7 +82,8 @@
             <div class="navbar-header">
                 <ul class="nav navbar-nav flex-row">
                     <li class="nav-item mobile-menu d-lg-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="/welcome/1"><i class="ft-menu font-large-1"></i></a></li>
-                    <li class="nav-item mr-auto"><a class="navbar-brand" href="/welcome/1"><img class="brand-logo" alt="modern admin logo" src="{{asset("images/logo/logo.png")}}">
+                    <li class="nav-item mr-auto"><a class="navbar-brand" href="/welcome/1">
+                        {{-- <img class="brand-logo" alt="modern admin logo" src="{{asset("images/logo/logo.png")}}"> --}}
                             <h3 class="brand-text">SIG-FAUNA</h3>
                         </a></li>
                     <li class="nav-item d-none d-lg-block nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="toggle-icon ft-toggle-right font-medium-3 white" data-ticon="ft-toggle-right"></i></a></li>
@@ -67,21 +93,23 @@
             <div class="navbar-container content">
                 <div class="collapse navbar-collapse" id="navbar-mobile">
                     <ul class="nav navbar-nav mr-auto float-left">
-                        <li class="nav-item d-none d-md-block"><a class="nav-link nav-menu-main menu-toggle" href="#"><i class="ft-menu"></i></a></li>
-                        <li class="nav-item nav-search"><a class="nav-link nav-link-search" href="#"><i class="material-icons">search</i></a>
-                            <div class="search-input">
-                                <input class="input round form-control search-box" type="text" placeholder="Explore Modern Admin" tabindex="0" data-search="template-list">
-                                <div class="search-input-close"><i class="ft-x"></i></div>
-                                <ul class="search-list"></ul>
-                                <div class="dropdown-menu arrow">
-                                    <div class="dropdown-item">
-                                        <input class="round form-control" type="text" placeholder="Search Here">
-                                    </div>
+                        <li class="nav-item d-none d-lg-block">
+                            <a class="nav-link nav-link-expand" href="#">
+                                <i class="ficon ft-maximize"></i>
+                            </a>
+                        </li>
+
+                        <!-- Header: Global SearchBar -->
+                        <li class="sgq-global-searchBar-main-container nav-item d-flex justify-content-center align-items-center pl-2">
+                            <div class="form-group position-relative m-0" style="height: 42px">
+                                <input id="sgq-global-searchbox" type="text" class="form-control border-0" placeholder="Pesquisar Animais...">
+                                <div class="form-control-position">
+                                    <label for="boxSearch" sgq-handle-global-searchBar="close" class="h-100 m-0 d-flex justify-content-center" style="padding-top: 1px;">
+                                        <i class="sgq-global-searchbox-icon icon-magnifier light font-medium-4"></i>
+                                    </label>
                                 </div>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link nav-link-expand mx-md-1 mx-0" href="#"><i class="ficon ft-maximize"></i></a></li>
-
                     </ul>
                     <ul class="nav navbar-nav float-right">
                         <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="mr-1 user-name text-bold-700">Bem Vindo(a), Utilizador</span><span class="avatar avatar-online"><img src="{{asset("images/portrait/small/user_male.png")}}" alt="avatar"><i></i></span></a>
@@ -110,25 +138,24 @@
                     </a>
                 </li>
 
-                <li class=" nav-item"><a href="#"><i class="material-icons">straighten</i><span class="menu-title" data-i18n="Material Components">Áreas de Conservação</span></a>
+                <li class=" nav-item"><a href="#"><i class="la la-globe"></i><span class="menu-title" data-i18n="Material Components">Áreas de Conservação</span></a>
                     <ul class="menu-content">
-                        <li><a class="menu-item" href="material-component-buttons.html"><i class="material-icons"></i><span data-i18n="Buttons">Cadastrar</span></a>
+                        <li><a class="menu-item" href="#"><i class="material-icons"></i><span data-i18n="Buttons">Cadastrar</span></a>
                         </li>
-                        <li><a class="menu-item" href="material-component-cards.html"><i class="material-icons"></i><span data-i18n="Cards">Listar</span></a>
+                        <li><a class="menu-item" href="#"><i class="material-icons"></i><span data-i18n="Cards">Listar</span></a>
                         </li>
-                        <li><a class="menu-item" href="material-component-expansion-panels.html"><i class="material-icons"></i><span data-i18n="Expansion Panels">Expansion Panels</span></a>
-                        </li>
+
 
                     </ul>
                 </li>
                 <li class=" nav-item"><a href="dashboard-sales.html"><i class="material-icons">view_list</i><span class="menu-title" data-i18n="Components">Animal</span></a>
                     <ul class="menu-content">
-                        <li><a class="menu-item" href="component-alerts.html"><i class="material-icons"></i><span data-i18n="Alerts">Cadastrar</span></a>
+                        <li><a class="menu-item" href="#"><i class="material-icons"></i><span data-i18n="Alerts">Cadastrar</span></a>
                         </li>
-                        <li><a class="menu-item" href="component-callout.html"><i class="material-icons"></i><span data-i18n="Callout">Listar</span></a>
+                        <li><a class="menu-item" href="#"><i class="material-icons"></i><span data-i18n="Callout">Listar</span></a>
                         </li>
                         </li>
-                        <li><a class="menu-item" href="component-carousel.html"><i class="material-icons"></i><span data-i18n="Carousel">Actualizar</span></a>
+                        <li><a class="menu-item" href="#"><i class="material-icons"></i><span data-i18n="Carousel">Actualizar</span></a>
                         </li>
 
                     </ul>
@@ -153,33 +180,24 @@
                         </li>
                     </ul>
                 </li>
-                <li class=" nav-item"><a href="#"><i class="material-icons">grid_on</i><span class="menu-title" data-i18n="Form Layouts">Estatística</span></a>
+                <li class=" nav-item"><a href="#"><i class="la la-pie-chart"></i><span class="menu-title" data-i18n="Form Layouts">Estatística</span></a>
                     <ul class="menu-content">
-                        <li><a class="menu-item" href="form-layout-basic.html"><i class="material-icons"></i><span data-i18n="Basic Forms">Basic Forms</span></a>
+                        <li><a class="menu-item" href="form-layout-basic.html"><i class="material-icons"></i><span data-i18n="Basic Forms">Animais Cadastrados </span></a>
                         </li>
-                        <li><a class="menu-item" href="form-layout-horizontal.html"><i class="material-icons"></i><span data-i18n="Horizontal Forms">Horizontal Forms</span></a>
+                        <li><a class="menu-item" href="form-layout-horizontal.html"><i class="material-icons"></i><span data-i18n="Horizontal Forms">Animais Cadastrados - Mensal</span></a>
                         </li>
-                        <li><a class="menu-item" href="form-layout-hidden-labels.html"><i class="material-icons"></i><span data-i18n="Hidden Labels">Hidden Labels</span></a>
+                        <li><a class="menu-item" href="form-layout-hidden-labels.html"><i class="material-icons"></i><span data-i18n="Hidden Labels">Animais Cadastrados - dia</span></a>
                         </li>
 
                     </ul>
                 </li>
 
 
-                <li class=" nav-item"><a href="#"><i class="material-icons">show_chart</i><span class="menu-title" data-i18n="Chartjs">Configurações</span></a>
+                <li class=" nav-item"><a href="#"><i class="la la-gear"></i><span class="menu-title" data-i18n="Chartjs">Configurações</span></a>
                     <ul class="menu-content">
-                        <li><a class="menu-item" href="chartjs-line-charts.html"><i class="material-icons"></i><span data-i18n="Line charts">Line charts</span></a>
+                        <li><a class="menu-item" href="#" id="register-user"><i class="material-icons"></i><span data-i18n="Line charts">Gerir Utilizador</span></a>
                         </li>
-                        <li><a class="menu-item" href="chartjs-bar-charts.html"><i class="material-icons"></i><span data-i18n="Bar charts">Bar charts</span></a>
-                        </li>
-                        <li><a class="menu-item" href="chartjs-pie-doughnut-charts.html"><i class="material-icons"></i><span data-i18n="Pie &amp; Doughnut charts">Pie &amp; Doughnut charts</span></a>
-                        </li>
-                        <li><a class="menu-item" href="chartjs-scatter-charts.html"><i class="material-icons"></i><span data-i18n="Scatter charts">Scatter charts</span></a>
-                        </li>
-                        <li><a class="menu-item" href="chartjs-polar-radar-charts.html"><i class="material-icons"></i><span data-i18n="Polar &amp; Radar charts">Polar &amp; Radar charts</span></a>
-                        </li>
-                        <li><a class="menu-item" href="chartjs-advance-charts.html"><i class="material-icons"></i><span data-i18n="Advance charts">Advance charts</span></a>
-                        </li>
+
                     </ul>
                 </li>
             </ul>
@@ -209,20 +227,72 @@
 
     <!-- BEGIN: Page Vendor JS-->
     <script src="{{asset("vendors/js/charts/chartist.min.js")}}"></script>
+    <script src="{{asset("vendors/js/charts/chart.min.js")}}"></script>
+    <script src="{{asset("vendors/js/charts/apexcharts/apexcharts.min.js")}}"></script>
+    <script src="{{asset("vendors/js/extensions/toastr.min.js")}}"></script>
+
     <script src="{{asset("vendors/js/charts/chartist-plugin-tooltip.min.js")}}"></script>
     <script src="{{asset("vendors/js/charts/raphael-min.js")}}"></script>
     <script src="{{asset("vendors/js/charts/morris.min.js")}}"></script>
     <script src="{{asset("vendors/js/timeline/horizontal-timeline.js")}}"></script>
+    <script src="{{asset("vendors/js/forms/icheck/icheck.min.js")}}"></script>
+    <script src="{{asset("vendors/js/forms/toggle/switchery.min.js")}}"></script>
+    <script src="{{asset("vendors/js/forms/toggle/switchery.min.js")}}"></script>
+    <script src="{{asset("vendors/js/forms/select/select2.full.min.js")}}"></script>
+    <script src="{{asset("vendors/js/forms/tags/form-field.js")}}"></script>
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
     <script src="{{asset("js/core/app-menu.js")}}"></script>
     <script src="{{asset("js/core/app.js")}}"></script>
+    <script src="{{asset("js/core/libraries/jquery.min.js")}}"></script>
+    <script src="{{asset("js/core/libraries/jquery_ui/jquery-ui.min.js")}}"></script>
+    <script src="{{asset("js/scripts/extensions/toastr.js")}}"></script>
+    {{-- <script src="{{asset("js/scripts/dropdowns/dropdowns.js")}}"></script> --}}
+    <script src="{{asset("js/scripts/tables/datatables/datatable-basic.js")}}"></script>
+    <script src="{{asset("js/scripts/forms/select/form-select2.js")}}"></script>
+    <script src="{{asset("js/scripts/forms/custom-file-input.js")}}"></script>
+    <script src="{{asset("js/scripts/modal/components-modal.js")}}"></script>
+    <script src="{{asset("js/scripts/ui/jquery-ui/date-pickers.js")}}"></script>
+    <script src="{{asset("js/scripts/ui/scrollable.js")}}"></script>
+    <script src="{{asset("js/scripts/animation/animation.js")}}"></script>
     <!-- END: Theme JS-->
+
+    {{--  jQuery Plugins --}}
+    <script src="{{asset("assets/plugins/jquery-cookie/src/jquery.cookie.js")}}"></script>
+
+    {{--  Charts  --}}
+    <script src="{{asset("assets/js/charts/sigarq-apexcharts.js")}}"></script>
+
+    {{--  Moment.JS  --}}
+    <script src="{{asset("assets/plugins/moment/moment.js")}}"></script>
+
+    <script src="{{asset("assets/js/app.layout.js")}}"></script>
+    <script src="{{asset("assets/js/home.script.js")}}"></script>
+    <script src="{{asset("assets/js/user.script.js")}}"></script>
+    <script src="{{asset("assets/js/documents.script.js")}}"></script>
+    <script src="{{asset("assets/js/folder.script.js")}}"></script>
+    <script src="{{asset("assets/js/box.script.js")}}"></script>
+
+    <script src="{{asset("assets/js/departments.script.js")}}"></script>
+    <script src="{{asset("assets/js/yearpicker.js")}}"></script>
+
+    {{-- Módulo APP Inicializa todos os módulos à cima --}}
+    <script src="{{asset("assets/js/scripts/modules/module.app.js")}}"></script>
+    <script src="{{asset("assets/js/scripts/modules/module.routes.js")}}"></script>
+    <script src="{{asset("assets/js/scripts/modules/module.header.js")}}"></script>
+
+    {{-- !OBS: Arquivo na qual os módulos são inicializados --}}
+    <script src="{{asset("assets/js/scripts/modules/module.run_modules.js")}}"></script>
+
+    <!-- END:MODULES JS -->
+    <script src="{{asset("assets/js/documents.script.js")}}"></script>
 
     <!-- BEGIN: Page JS-->
     <script src="{{asset("js/scripts/pages/material-app.js")}}"></script>
-    <script src="{{asset("js/scripts/pages/dashboard-ecommerce.js")}}"></script>
+    {{-- <script src="{{asset("js/scripts/pages/dashboard-ecommerce.js")}}"></script> --}}
+    <script src="{{asset("js/scripts/pages/dashboard-crypto.js")}}"></script>
+
     <script type="text/javascript">
         var URL_SITE = '" . URL::to('/') . "'
     </script>

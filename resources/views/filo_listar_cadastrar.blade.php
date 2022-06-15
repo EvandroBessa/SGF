@@ -3,7 +3,7 @@
 @section ('conteudo')
 
 <div class="app-content content">
-<div class="content-overlay"></div> 
+<div class="content-overlay"></div>
 <div class="content-header row">
     <div class="content-header-left col-md-6 col-12 mb-2 breadcrumb-new">
         <h3 class="content-header-title mb-0 d-inline-block">Filos</h3>
@@ -28,8 +28,8 @@
             </div>
         </div>
     </div>
-</div>  
-<div class="content-body">  
+</div>
+<div class="content-body">
 <section id="base-style">
     <div class="row">
         <div class="col-12">
@@ -48,7 +48,7 @@
                 </div>
                 <div class="card-content collapse show">
                     <div class="card-body card-dashboard">
-                       
+
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered base-style">
                                 <thead>
@@ -94,7 +94,7 @@
                                         <td>2012/03/29</td>
                                         <td>$433,060</td>
                                     </tr>
-                                    
+
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -113,8 +113,8 @@
             </div>
         </div>
     </div>
-</section> 
-</div> 
-</div>    
-    
+</section>
+</div>
+</div>
+
 @endsection
