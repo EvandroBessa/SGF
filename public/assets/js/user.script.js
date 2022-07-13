@@ -4,14 +4,13 @@ $(function () {
 
     $("#user-container").removeClass("hidden");
     $("#box-row").addClass("hidden");
-
-    // $("#box-container").addClass("hidden");
-    // $('#userStatsContainer').addClass('hidden');
-    // $('#provinceStatsContainer').addClass('hidden');
-    // $('#globalGraphContainer').addClass('hidden');
-    // $('#monthlyStatsContainer').addClass('hidden');
-    // $('#monthlyUserStatsContainer').addClass('hidden');
-    // $('#provinceUserStatsContainer').addClass('hidden');
+    $("#box-container").addClass("hidden");
+    $('#userStatsContainer').addClass('hidden');
+    $('#provinceStatsContainer').addClass('hidden');
+    $('#globalGraphContainer').addClass('hidden');
+    $('#monthlyStatsContainer').addClass('hidden');
+    $('#monthlyUserStatsContainer').addClass('hidden');
+    $('#provinceUserStatsContainer').addClass('hidden');
 
   });
 
@@ -204,6 +203,7 @@ $(function () {
     // const isAdmin = (document.cookie.indexOf('Administrador') !== -1);
 
     // isAdmin ? getVerifierUsers() : getDigitizerUsers();
+    console.log(" Primeiro Passo... ");
 
     getAllUsers();
 
@@ -212,6 +212,8 @@ $(function () {
 
 
   function getAllUsers() {
+
+    console.log("Segundo Passo");
     $.ajax({
       type: "GET",
       url: "{{route('contalistar')}}",
@@ -239,20 +241,11 @@ $(function () {
 
           editUser();
         }
-      },error: function (error) {
-        var timerErrorMessage = setTimeout(function () {
-            setLoadingStatusMessage('Erro: Aplicação Offline!');
-            clearTimeout(timerErrorMessage);
-        }, timerDuration);
-
-        var timer = setTimeout(function () {
-            hideLoadingStatus();
-            clearTimeout(timer);
-        }, timerDuration * 2);
-
-        toastr.error("Ocorreu um erro no Sistema, por favor, contacte a assistência técnica para a melhor resolução do provlema.", "Uupppps!", { timeOut: 10000 });
-        console.log("error: ", error);
-    }
+      },
+      error: function (response) {
+        console.log(response);
+      }
+     
     });
   }
 
@@ -495,7 +488,12 @@ $(function () {
     });
   }
 
-  if((document.cookie.indexOf('Administrador') !== -1) || (document.cookie.indexOf('AdminDigitalizacao') !== -1)) {
+
+  console.log("COOKIE: ",document.cookie.indexOf('administrador'));
+
+  if((document.cookie.indexOf('Administrador') == -1) || (document.cookie.indexOf('AdminDigitalizacao') !== -1)) {
+
+    console.log("Estou dentro: ");
     getUsers();
   }
 
