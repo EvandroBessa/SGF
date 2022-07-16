@@ -155,7 +155,7 @@
                                 </h4>
                             </div>
                             <div class="form-group position-relative mt-1">
-                                <input type="text" class="form-control form-control-lg input-lg mb-1" id="boxSearch" placeholder="Pesquisar Caixas">
+                                <input type="text" class="form-control form-control-lg input-lg mb-1" id="boxSearch" placeholder="Pesquisar Animais">
                                 <div class="form-control-position">
                                     <label for="boxSearch"><i class="icon-magnifier danger font-medium-4"></i></label>
                                 </div>
@@ -190,7 +190,7 @@
                         <div class="col-12 col-xl-4">
                             <div class="card-header">
                                 <h4 class="card-title">
-                                    <span class="position-relative">Documentos</span>
+                                    <span class="position-relative">Caracteristicas</span>
                                     <div class="form-control-position" style="top: 13px !important; right: 36px !important; cursor: pointer;" id="refreshDocs">
                                         <i class="ft-refresh-ccw font-medium-4" title="Atualizar"></i>
                                     </div>
@@ -198,7 +198,7 @@
                                 </h4>
                             </div>
                             <div class="form-group position-relative mt-1">
-                                <input type="text" class="form-control form-control-lg input-lg mb-1" id="docSearch" placeholder="Pesquisar documentos">
+                                <input type="text" class="form-control form-control-lg input-lg mb-1" id="docSearch" placeholder="Pesquisar Caracteristicas">
                                 <div class="form-control-position">
                                     <label for="docSearch"><i class="icon-magnifier danger font-medium-4"></i></label>
                                 </div>

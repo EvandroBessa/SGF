@@ -1,7 +1,7 @@
 $(function () {
 
   $("#register-user").on("click", function () {
-
+   
     $("#user-container").removeClass("hidden");
     $("#box-row").addClass("hidden");
     $("#box-container").addClass("hidden");
@@ -11,6 +11,7 @@ $(function () {
     $('#monthlyStatsContainer').addClass('hidden');
     $('#monthlyUserStatsContainer').addClass('hidden');
     $('#provinceUserStatsContainer').addClass('hidden');
+
 
   });
 
@@ -245,7 +246,7 @@ $(function () {
       error: function (response) {
         console.log(response);
       }
-     
+
     });
   }
 

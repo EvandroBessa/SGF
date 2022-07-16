@@ -140,7 +140,7 @@
 
                 <li class=" nav-item"><a href="#"><i class="la la-globe"></i><span class="menu-title" data-i18n="Material Components">Áreas de Conservação</span></a>
                     <ul class="menu-content">
-                        <li><a class="menu-item" href="#"><i class="material-icons"></i><span data-i18n="Buttons">Cadastrar</span></a>
+                        <li><a class="menu-item" href="/areaccadastro"><i class="material-icons"></i><span data-i18n="Buttons">Cadastrar</span></a>
                         </li>
                         <li><a class="menu-item" href="#"><i class="material-icons"></i><span data-i18n="Cards">Listar</span></a>
                         </li>
@@ -222,7 +222,7 @@
 
 
     <!-- BEGIN: Vendor JS-->
-    {{-- <script src="{{asset("vendors/js/material-vendors.min.js")}}"></script> --}}
+    <script src="{{asset("vendors/js/material-vendors.min.js")}}"></script>
     <!-- BEGIN Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
