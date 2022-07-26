@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Municipio;
 use App\Models\Area_Conservacao;
+use Illuminate\Support\Facades\Log;
 
 class AreaConservacaoController extends Controller
 {
@@ -14,10 +15,20 @@ class AreaConservacaoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {
-        //
+        $areas = Area_Conservacao:: join('municipios', 'municipios.id','=','Areas_Conservacoes.id_municipio')
+                                ->join('provincias', 'provincias.id','=','municipios.id_provincia')
+                                ->get (['Areas_Conservacoes.nome_area','Areas_Conservacoes.id','municipios.nome_municipio','provincias.nome_provincia']);
+        return $areas;
+        // return response()->json($areas);
     }
 
+
+    public function mlistar()
+    {
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +37,7 @@ class AreaConservacaoController extends Controller
     public function create()
     {
         $moradas = Municipio::all();
-        return view ('areaccadastro',['moradas'=> $moradas]);
+        return $moradas;
 
         // return view ('areaccadastro');
     }
@@ -39,12 +50,27 @@ class AreaConservacaoController extends Controller
      */
     public function store(Request $request)
     {
-        $areaconservacao = new Area_Conservacao;
-        $areaconservacao->area_conservacao = $request->area_conservacao;
-        $areaconservacao->id_morada = $request->val_municipio;
+        // echo("sssssssssssssssssss: ".$request);
+        // Log::info('quero saber o que e: ' .$request->all());
 
-        $areaconservacao-> save();
-        return redirect('/areaccadastro');
+        // dd($request->all());
+
+        //$teste = $request->get('rel');
+
+        // Log::info('quero saber o que e: ' .$teste);
+
+        $areacconservacao = new Area_Conservacao;
+        $areacconservacao->nome_area = $request->nome_area;
+        $areacconservacao->id_municipio = $request->id_municipio;
+
+        // $areaconservacao-> save();
+        // return redirect('/areaccadastro');
+
+
+        $areacconservacao-> save();
+
+         return $areacconservacao;
+
     }
 
     /**

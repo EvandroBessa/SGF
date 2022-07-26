@@ -1,7 +1,15 @@
 $(function () {
 
+    toastr.options = {
+        positionClass: "toast-top-center",
+        showMethod: "slideDown",
+        hideMethod: "slideUp",
+        closeMethod: "slideUp",
+        showDuration: 200,
+    };
+
   $("#register-user").on("click", function () {
-   
+
     $("#user-container").removeClass("hidden");
     $("#box-row").addClass("hidden");
     $("#box-container").addClass("hidden");
@@ -11,9 +19,27 @@ $(function () {
     $('#monthlyStatsContainer').addClass('hidden');
     $('#monthlyUserStatsContainer').addClass('hidden');
     $('#provinceUserStatsContainer').addClass('hidden');
+    $("#area-container").addClass("hidden");
 
 
   });
+
+
+//   $("#register-area").on("click", function () {
+
+//     $("#area-container").removeClass("hidden");
+//     $("#user-container").addClass("hidden");
+//     $("#box-row").addClass("hidden");
+//     $("#box-container").addClass("hidden");
+//     $('#userStatsContainer').addClass('hidden');
+//     $('#provinceStatsContainer').addClass('hidden');
+//     $('#globalGraphContainer').addClass('hidden');
+//     $('#monthlyStatsContainer').addClass('hidden');
+//     $('#monthlyUserStatsContainer').addClass('hidden');
+//     $('#provinceUserStatsContainer').addClass('hidden');
+
+
+//   });
 
   function getProfiles() {
 
@@ -46,6 +72,142 @@ $(function () {
       },
     });
   }
+
+
+//   function getProfiles() {
+
+//     $.ajax({
+//       type: "GET",
+//       url: "/get-profile",
+//       contentType: "application/json",
+//       data: {},
+//       dataType: "json",
+//       async: true,
+//       cache: false,
+//       success: function (response) {
+
+//         if (response.perfis != undefined) {
+//           response.perfis.forEach((element) => {
+//             const isAdminDigitalizacao = (document.cookie.indexOf('AdminDigitalizacao') !== -1) && (element.Designacao === 'AdminDigitalizacao' || element.Designacao === 'Digitalizador');
+//             const isAdminVerificacao = (document.cookie.indexOf('Administrador') !== -1) && (element.Designacao === 'Administrador' || element.Designacao === 'Verificador');
+
+//             if(isAdminDigitalizacao){
+//               $("#perfil").append('<option value="' + element.PerfilUtilizadoresId +'">' +element.Designacao +"</option>");
+//             }else if(isAdminVerificacao){
+//               $("#perfil").append('<option value="' + element.PerfilUtilizadoresId +'">' +element.Designacao +"</option>");
+//             }
+
+//           });
+//         }
+//       },
+//       error: function (response) {
+//         console.log(response);
+//       },
+//     });
+//   }
+
+//   //Evento para cadastro de areas de conservaçao
+//   $("#save-area").on("click",function (element) {
+//         element.preventDefault();
+
+//         let nome = $("#areaconservacao").val();
+//         let perfil = $("#perfil option:selected").val();
+//         // let estado = $("#estado option:selected").val();
+//         let formType = $('#area-form')[0].dataset.formtype;
+
+//         let UserFormData = {
+//         nome: nome,
+//         perfil: perfil,
+//         //   estado
+//         };
+//         let route = $('#area-form').data('route');
+//         let form  = $("#form-data").attr("action");
+
+//         var formValues = $(this).serialize();
+//         var dataString = $("#area-form").serialize();
+
+
+//         $.ajax({
+//             type: "POST",
+//             url: $(this).attr('action'),
+//             contentType: "application/json",
+//             data: dataString,
+//             dataType: "json",
+//             async: true,
+//             cache: false,
+//             success: function (response) {
+//                 console.log('TESTANDO: ', response);
+
+//                 if (response.success) {
+//                     toastr.success(response.mensagem, "Cadastro da Area de Conservaçao!", {
+//                     showMethod: "slideDown",
+//                     hideMethod: "slideUp",
+//                     timeOut: 1000,
+//                     onHidden: function () {
+//                         //Hide modal
+//                         $('.btn_no').trigger('click');
+
+//                         $("#user-table tbody tr").remove();
+//                         window.location = "/areaccadastro";
+
+//                         // getUsers();
+//                     },
+
+//                     });
+//                 } else {
+//                     toastr.error(response.error, "Erro!", { timeOut: 5000 });
+//                 }
+//             },
+//             error: function (response) {
+//             console.log(response);
+//             },
+//         });
+//     });
+    // // Should create or update on save
+    // (formType === 'create') ? createAreas(UserFormData) : updateUser(UserFormData);
+
+
+
+
+
+//   function createAreas(UserFormData){
+//     $.ajax({
+//       type: "POST",
+//       url: $(this).attr('action'),
+//       contentType: "application/json",
+//       data: JSON.stringify(UserFormData),
+//       dataType: "json",
+//       async: true,
+//       cache: false,
+//       success: function (response) {
+//         console.log('TESTANDO: ', reponse);
+
+//         if (response.mensagem != undefined) {
+//           toastr.success(response.mensagem, "Cadastro da Area de Conservaçao!", {
+//             showMethod: "slideDown",
+//             hideMethod: "slideUp",
+//             timeOut: 1000,
+//             onHidden: function () {
+//               //Hide modal
+//               $('.btn_no').trigger('click');
+
+//               $("#user-table tbody tr").remove();
+//               getUsers();
+//             },
+//           });
+//         } else {
+//           toastr.error(response.error, "Erro!", { timeOut: 5000 });
+//         }
+//       },
+//       error: function (response) {
+//         console.log(response);
+//       },
+//     });
+//   }
+
+
+
+
 
   $("#user-form").on("submit", function (element) {
     element.preventDefault();
@@ -206,49 +368,49 @@ $(function () {
     // isAdmin ? getVerifierUsers() : getDigitizerUsers();
     console.log(" Primeiro Passo... ");
 
-    getAllUsers();
+    // getAllUsers();
 
   }
 
 
 
-  function getAllUsers() {
+  // function getAllUsers() {
 
-    console.log("Segundo Passo");
-    $.ajax({
-      type: "GET",
-      url: "{{route('contalistar')}}",
-      data: {},
-      dataType: "json",
-      success: function (response) {
+  //   console.log("Segundo Passo");
+  //   $.ajax({
+  //     type: "GET",
+  //     // url: "{{route('contalistar')}}",
+  //     data: {},
+  //     dataType: "json",
+  //     success: function (response) {
 
-        console.log("VERRRRRRR",response);
+  //       console.log("VERRRRRRR",response);
 
-        if (response.user) {
-          let users = [];
+  //       if (response.user) {
+  //         let users = [];
 
-          destroyTable();
+  //         destroyTable();
 
-          response.user.map((user, index) => {
-            let editBtn = `<i class="ft-edit edit-user" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}"
-                            data-profile="${user.Designacao}" data-status="${user.Estado}" data-toggle="modal" data-target="#xlarge-user" title="Editar"></i>`;
-            let editPwdBtn = `<i class="ft-lock edit-pwd ml-1" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}"
-                            data-profile="${user.Designacao}" data-status="${user.Estado}" data-toggle="modal" data-target="#edit-pwd" title="Alterar Senha"></i>`;
+  //         response.user.map((user, index) => {
+  //           let editBtn = `<i class="ft-edit edit-user" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}"
+  //                           data-profile="${user.Designacao}" data-status="${user.Estado}" data-toggle="modal" data-target="#xlarge-user" title="Editar"></i>`;
+  //           let editPwdBtn = `<i class="ft-lock edit-pwd ml-1" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}"
+  //                           data-profile="${user.Designacao}" data-status="${user.Estado}" data-toggle="modal" data-target="#edit-pwd" title="Alterar Senha"></i>`;
 
-            users.push({user, editBtn, editPwdBtn});
-          });
+  //           users.push({user, editBtn, editPwdBtn});
+  //         });
 
-          renderTable(users);
+  //         renderTable(users);
 
-          editUser();
-        }
-      },
-      error: function (response) {
-        console.log(response);
-      }
+  //         editUser();
+  //       }
+  //     },
+  //     error: function (response) {
+  //       console.log(response);
+  //     }
 
-    });
-  }
+  //   });
+  // }
 
 
 
@@ -506,7 +668,7 @@ $(function () {
   });
 
   // Invoke functions
-  getProfiles();
+//   getProfiles();
   changePassword();
   resetUserModal();
 }); //ONLOAD END

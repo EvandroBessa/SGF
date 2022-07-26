@@ -7,10 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Exception;
 use App\Models\Municipio;
-use App\Models\Funcionario;
-use App\Models\Departamento;
-use App\Models\Cargo;
-use App\Models\Papeis;
+use App\Models\Area_Conservacao;
+use Illuminate\Support\Facades\Log;
 
 class WelcomeController extends Controller
 {
@@ -41,57 +39,58 @@ class WelcomeController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        // $teste = $request->get('rel');
+         //dd(request());
+
+        // error_log('Some message here PPPPPPPPPPPPP: '.$request);
+
+        // Log::info('quero saber o que e: ' .$request);
+
+        // $areacconservacao = new Area_Conservacao;
+        // $areacconservacao->nome_area = $request->nome_area;
+        // $areacconservacao->id_municipio = $request->id_municipio;
+
+        // // $areaconservacao-> save();
+        // // return redirect('/areaccadastro');
+
+
+        // $areacconservacao-> save();
+
+        //  return $areacconservacao;
+
+
+
+    $data = Area_Conservacao::insert([
+        'nome_area' => $request->nome_area,
+        'id_municipio' => $request->id_municipio,
+    ]);
+
+
+    return response()->json($data);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //

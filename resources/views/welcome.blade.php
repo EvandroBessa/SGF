@@ -2,8 +2,6 @@
 
 @section('conteudo')
 
-
-
           <!-- BEGIN: Content-->
           <div class="app-content content h-100">
             <div class="content-overlay"></div>
@@ -137,7 +135,7 @@
             </div>
             <!-- END: OVERLAY DA PESQUISA GLOBAL-->
 
-            <div class="content-wrapper">
+            <div class="content-wrapper ">
                 <div class="content-header row">
                 </div>
                 <div class="content-body">
@@ -574,39 +572,43 @@
                         </div>
                     </div>
 
+                       {{--  Tablbe USER REGISTRED --}}
+
                     <div class="container hidden" id="user-container">
                         <div class="row match-height">
-                        <div class="col-xl-12 col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Utilizadores</h4>
-                                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                                    <div class="heading-elements" id="addUser-modal">
-                                        <span class="h4" data-toggle="modal" data-target="#xlarge-user"><i class="ft-plus-circle info" title="Adicionar"></i> Adicionar</span>
+                            <div class="col-xl-12 col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Utilizadores</h4>
+                                        <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                        <div class="heading-elements" id="addUser-modal">
+                                            <span class="h4" data-toggle="modal" data-target="#xlarge-user"><i class="ft-plus-circle info" title="Adicionar"></i> Adicionar</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="card-content">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-bordered" id="user-table" width="100%">
-                                            <thead class="bg-info white">
-                                                <tr>
-                                                    <th>Nome</th>
-                                                    <th>Nome Utilizador</th>
-                                                    <th>Perfil</th>
-                                                    <th>Estado</th>
-                                                    <th>Op&ccedil;&otilde;es</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
+                                    <div class="card-content">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered" id="user-table" width="100%">
+                                                <thead class="bg-success white">
+                                                    <tr>
+                                                        <th>Nome</th>
+                                                        <th>Nome Utilizador</th>
+                                                        <th>Perfil</th>
+                                                        <th>Estado</th>
+                                                        <th>Op&ccedil;&otilde;es</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
 
-                                            </tbody>
-                                        </table>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
                     </div>
+
+
 
                     <div class="container hidden" id="box-container">
                         <div class="row match-height">
@@ -646,8 +648,9 @@
                         </div>
                     </div>
 
-                    {{--  DEP MODAL USER REGISTRED --}}
-                    <div class="col-lg-4 col-md-6 col-sm-12">
+
+                     {{--  DEP MODAL USER REGISTRED --}}
+                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
                             <!-- Modal -->
                             <div class="modal fade text-left" id="xlarge-user" tabindex="-1" role="dialog" aria-labelledby="userForm-title" aria-hidden="true">
@@ -713,6 +716,124 @@
                             </div>
                         </div>
                     </div>
+
+
+
+                    {{--  table Area REGISTRED --}}
+                    <div class="container hidden" id="area-container">
+                        <div class="row match-height">
+                            <div class="col-xl-12 col-12" >
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Áreas de Conservação</h4>
+                                        <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                        <div class="heading-elements" >
+                                            <span id="add-area" class="h4" data-toggle="modal" data-target="#xlarge-area"><i class="ft-plus-circle info" title="Adicionar"></i> Adicionar</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered" id="area-table" width="100%">
+                                                <thead class="bg-success white">
+                                                    <tr>
+                                                        <th>NomeArea de Conservação</th>
+                                                        <th>Provincia</th>
+                                                        <th>Municipio</th>
+                                                        <th>Estado</th>
+                                                        <th>Op&ccedil;&otilde;es</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- <div id="DepDocType" class="col-xl-6 col-12">
+                                <div id="DepDocTypeContent">
+
+                                </div>
+                            </div> --}}
+                        </div>
+                    </div>
+
+                    {{--  DEP Area REGISTRED --}}
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <!-- Modal -->
+                            <div class="modal fade text-left" id="xlarge-area" tabindex="-1" role="dialog" aria-labelledby="areaForm-title" aria-hidden="true">
+                                <div class="modal-dialog modal-l center-modal" >
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="areaForm-title">Cadastro da Área de Conservação</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-12 col-xl-12">
+                                                    <form id="area-form" class="form form-horizontal" method="POST" >
+                                                        @csrf
+                                                        <div id='doc-infoContent'>
+                                                            <div class='form-group row'>
+                                                                <label class='col-md-12' for='nome'>Nome da Área de Conservação</label><br>
+                                                                <div class='col-md-12 mx-auto'>
+                                                                    <input type="text" id="nome_area" class="form-control mb-1" name ="nome_area" required>
+                                                                    <span></span>
+                                                                </div>
+                                                            </div>
+                                                                {{-- <div class="form-group row">
+                                                                    <label class="col-md-12" for="sigla">Nome U</label><br>
+                                                                    <div class="col-md-12 mx-auto">
+                                                                        <input type="text" id="nomeUtilizador" class="form-control mb-1"  name="nomeUtilizador" required>
+                                                                        <span></span>
+                                                                    </div>
+                                                                </div> --}}
+                                                            <div class="form-group row">
+                                                                <div class="col-md-12 mx-auto">
+                                                                    <label for="exampleSelectGender">Localização</label>
+                                                                    <select class="form-control"  id="id_municipio" name="id_municipio">
+                                                                        <option id="municipios">Selecione a Localização</option>
+                                                                            {{-- @foreach($moradas as $morada)
+                                                                                <option value="{{$morada->id}}">{{$morada->nome_municipio}}</option>
+                                                                            @endforeach --}}
+                                                                    </select>
+                                                                    <span></span>
+                                                                </div>
+                                                            </div>
+                                                                {{-- <div class="form-group row">
+                                                                    <div class="col-md-12 mx-auto">
+                                                                        <select class="form-control mb-1" aria-label="Default select example" name="estado" id="estado" required>
+                                                                            <option selected disabled>Escolha o Estado</option>
+                                                                            <option value="Activo">Activo</option>
+                                                                            <option value="Inactivo">Inactivo</option>
+                                                                        </select>
+                                                                        <span></span>
+                                                                    </div>
+                                                                </div> --}}
+                                                        </div>
+                                                        <div class="form-actions">
+                                                            <button id="save-area" type="submit" class="btn btn-info" >
+                                                                <i class="la la-check-square-o"></i> Salvar
+                                                            </button>
+                                                            <button type="button" class="btn btn-danger mr-1 btn_no" data-dismiss="modal" id="userModal-cancel">
+                                                                <i class="ft-x"></i> Cancelar
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
 
                     {{--  Confirm box--}}
                     <div class="col-lg-4 col-md-6 col-sm-12">

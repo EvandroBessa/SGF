@@ -133,8 +133,11 @@
         <script src="{{asset("js/core/app.js")}}"></script>
         <script src="{{asset("vendors/js/extensions/toastr.min.js")}}"></script>
         <script src="{{asset("js/scripts/extensions/toastr.js")}}"></script>
+        {{-- <script src="{{asset("js/core/libraries/jquery.min.js")}}"></script> --}}
+       
         {{--  <script src="../../../app-assets/js/core/libraries/jquery.min.js"></script>  --}}
-        <script src="{{asset("js/core/libraries/jquery.slim.js")}}"></script>
+        {{-- <script src="{{asset("js/core/libraries/jquery.slim.js")}}"></script> --}}
+         {{-- <script src="{{asset("js/core/libraries/jquery.min.js")}}"></script> --}}
 
         <script src="{{asset("vendors/js/animation/jquery.appear.js")}}"></script>
         <script src="{{asset("js/scripts/animation/animation.js")}}"></script>

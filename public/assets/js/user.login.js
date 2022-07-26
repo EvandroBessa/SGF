@@ -36,7 +36,7 @@ $(document).ready(function () {
             async: true,
             cache: false,
             success: function (response) {
-
+                console.log("Que erro  e: ",response);
                 if (response.success) {
                     var timerChangeMessage = setTimeout(function () {
                         toastr.success(response.mensagem, "Tudo Certo!", { timeOut: 1500 });

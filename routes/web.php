@@ -30,6 +30,7 @@ use App\Http\Controllers\ContaController;
 
 //Rotas do director
 Route::get('/welcome/{a}', [WelcomeController::class, 'index'])->name('welcome');
+Route::post('/acadastro', [WelcomeController::class, 'store']);
 
 // Rotas do Administrador de parque
 Route::get('/adminparque',[AdminparqueController::class, 'index'])->name('adminparque');
@@ -50,18 +51,22 @@ Route::post('/parque_cadastro', [ParqueController::class, 'store']);
 Route::get('/parquelistar', [ParqueController::class, 'index']);
 
 //Rotas das Áreas de conservação
-Route::get('/areaccadastro', [AreaConservacaoController::class, 'create']);
-Route::post('/areaccadastro', [AreaConservacaoController::class, 'store']);
-Route::get('/arealistar', [AreaConservacaoController::class, 'index']);
+
+
+Route::get('/areaccadastro', [AreaConservacaoController::class, 'create'])->name('municipioslistar');
+Route::post('/areaccadastrando', [AreaConservacaoController::class, 'store']);
+Route::get('/arealistar', [AreaConservacaoController::class, 'index'])->name('arealistar');
+// Route::get('/municipioslistar', [AreaConservacaoController::class, 'mlistar'])->name('municipioslistar');
+Route::post('/cadastroarea', [AreaConservacaoController::class, 'store'])->name('cadastro_area');
 
 //Rotas do Funcionário
-Route::get('/funcionario_cadastro', [FuncionarioController::class, 'create'])->name('funcionariocadastro');;
-Route::post('/funcionario_cadastro', [FuncionarioController::class, 'store'])->name('funcionariocadastro');;
-Route::get('/funcionario_listar', [FuncionarioController::class, 'index'])->name('funcionariolistar');;
-Route::get('/funcionario_perfil', [FuncionarioController::class, 'perfil'])->name('funcionarioperfil');;
+Route::get('/funcionario_cadastro', [FuncionarioController::class, 'create'])->name('funcionariocadastro');
+Route::post('/funcionario_cadastro', [FuncionarioController::class, 'store'])->name('funcionariocadastro');
+Route::get('/funcionario_listar', [FuncionarioController::class, 'index'])->name('funcionariolistar');
+Route::get('/funcionario_perfil', [FuncionarioController::class, 'perfil'])->name('funcionarioperfil');
 Route::get('/funcionario_listar_actualizar', [FuncionarioController::class, 'actualizar'])->name('funcionariolistaractualizar');
-Route::get('/funcionario_actualizar/{id}', [FuncionarioController::class, 'edit'])->name('funcionarioactualizar');;
-Route::post('/funcionario_actualizar/{id}', [FuncionarioController::class, 'update'])->name('funcionarioactualizar');;
+Route::get('/funcionario_actualizar/{id}', [FuncionarioController::class, 'edit'])->name('funcionarioactualizar');
+Route::post('/funcionario_actualizar/{id}', [FuncionarioController::class, 'update'])->name('funcionarioactualizar');
 
 //Rotas do Animal
 Route::get('/animalcadastro', [AnimalController::class, 'formulario_animal'])->name('animalcadastro');;
