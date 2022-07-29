@@ -159,7 +159,7 @@
                     </li>
                     <li class=" nav-item"><a href="dashboard-sales.html"><i class="la la-pencil-square"></i><span class="menu-title" data-i18n="Components">Animal</span></a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="#"><i class="material-icons"></i><span data-i18n="Alerts">Cadastrar</span></a>
+                            <li><a class="menu-item" href="#" id="register-animal"><i class="material-icons"></i><span data-i18n="Alerts">Cadastrar</span></a>
                             </li>
                             <li><a class="menu-item" href="#"><i class="material-icons"></i><span data-i18n="Callout">Listar</span></a>
                             </li>
@@ -431,6 +431,7 @@
     <script src="{{asset("assets/js/home.script.js")}}"></script>
     <script src="{{asset("assets/js/user.script.js")}}"></script>
     <script src="{{asset("assets/js/area_conservacao.script.js")}}"></script>
+    <script src="{{asset("assets/js/animal.script.js")}}"></script>
     {{-- <script src="{{asset("assets/js/documents.script.js")}}"></script> --}}
     <script src="{{asset("assets/js/folder.script.js")}}"></script>
     {{-- <script src="{{asset("assets/js/box.script.js")}}"></script> --}}

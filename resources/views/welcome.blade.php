@@ -485,6 +485,79 @@
                         </div>
                     </div>
 
+
+
+
+                    {{--  FORM REGISTER ANIMAL  --}}
+
+                    <div class="content-wraper hidden" id="animal-container">
+                        <div class="page-header">
+                          <h3 class="page-title">
+                              Formulário do Animal
+                          </h3>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-12 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Dados do Animal</h4>
+                                        <p class="card-description"></p>
+                                        <form class="forms-sample" id="animal-form" method="POST" >
+                                            @csrf
+                                            <div class="form-group">
+                                                <label for="exampleInputName1">Nome Científico</label>
+                                                <input type="text" class="form-control {{$errors->has('nome_cientifico') ? 'is-invalid' : ''}}" id="nome_cientifico" name="nome_cientifico" placeholder="Nome Cientifico">
+                                                @if($errors->has('nome_cientifico'))
+                                                    <div class="invalid-feedback">
+                                                        {{$errors->first('nome_cientifico')}}
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputName1">Nome Vulgar</label>
+                                                <input type="text" class="form-control {{$errors->has('nome_vulgar') ? 'is-invalid' : ''}}" id="nome_vulgar" name="nome_vulgar"placeholder="Nome Vulgar">
+                                                @if($errors->has('nome_vulgar'))
+                                                    <div class="invalid-feedback">
+                                                        {{$errors->first('nome_vulgar')}}
+                                                    </div>
+                                                 @endif
+                                            </div>
+
+                                            <div class="form-group col-md-12 grid-margin stretch-card ">
+                                                <label for="exampleSelectGender">Especie</label>
+                                                <select class="form-control {{$errors->has('especie') ? 'is-invalid' : ''}}"  id="especie" name="especie">
+                                                    <option value="">Selecione a especie</option>
+                                                    
+                                                </select>
+                                                @if($errors->has('especie'))
+                                                    <div class="invalid-feedback">
+                                                        {{$errors->first('especie')}}
+                                                    </div>
+                                                @endif
+                                            </div>
+                                            <div class="form-actions">
+                                                <button type="submit" class="btn btn-success" id="validate-btn">
+                                                    <i class="la la-check-square-o"></i> Salvar
+                                                </button>
+                                                <button type="button" class="btn btn-danger mr-1 " data-dismiss="modal">
+                                                    <i class="ft-x"></i> Cancelar
+                                                </button>
+                                            </div>
+
+                                            {{-- <button type="submit" class="btn btn-primary mr-2">Registar</button>
+                                            <button class="btn btn-light">Cancelar</button> --}}
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
                     {{--  DOCUMENT MODAL  --}}
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
@@ -649,7 +722,7 @@
                     </div>
 
 
-                     {{--  DEP MODAL USER REGISTRED --}}
+                     {{--  FORM MODAL USER REGISTRED --}}
                      <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
                             <!-- Modal -->
@@ -759,7 +832,7 @@
                         </div>
                     </div>
 
-                    {{--  DEP Area REGISTRED --}}
+                    {{--  FORM Area REGISTRED --}}
                     <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="form-group">
                             <!-- Modal -->

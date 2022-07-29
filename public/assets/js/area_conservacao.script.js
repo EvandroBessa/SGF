@@ -21,6 +21,7 @@ $(function () {
     $('#monthlyStatsContainer').addClass('hidden');
     $('#monthlyUserStatsContainer').addClass('hidden');
     $('#provinceUserStatsContainer').addClass('hidden');
+    $("#animal-container").addClass("hidden");
 
 
   });

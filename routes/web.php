@@ -71,9 +71,10 @@ Route::get('/funcionario_actualizar/{id}', [FuncionarioController::class, 'edit'
 Route::post('/funcionario_actualizar/{id}', [FuncionarioController::class, 'update'])->name('funcionarioactualizar');
 
 //Rotas do Animal
-Route::get('/animalcadastro', [AnimalController::class, 'formulario_animal'])->name('animalcadastro');;
-Route::post('/animalcadastro', [AnimalController::class, 'salvar_animal'])->name('animalpcadastro');;
-Route::get('/animal_listar', [AnimalController::class, 'listar_animal'])->name('animallistar');;
+Route::get('/animalcadastro', [AnimalController::class, 'formulario_animal'])->name('animalcadastro');
+Route::post('/animalcadastro', [AnimalController::class, 'salvar_animal'])->name('animalpcadastro');
+Route::get('/animal_listar', [AnimalController::class, 'listar_animal'])->name('animallistar');
+
 
 //rotas de gestão de filos
 Route::get('/filo_cadastro', [AnimalController::class, 'filo_cadastro'])->name('filocadastro');
@@ -118,6 +119,7 @@ Route::post('/genero_cadastro', [AnimalController::class, 'genero_salvar'])->nam
 
 
 //rotas de gestão de especie
+Route::get('/especielistar', [AnimalController::class, 'especie_listar']);
 Route::get('/especie_cadastro', [AnimalController::class, 'especie_cadastro'])->name('especiecadastro');
 Route::get('/especie_listar_cadastrar', [AnimalController::class, 'especie_listar_cadastrar'])->name('especielistarcadastrar');
 Route::post('/especie_cadastro', [AnimalController::class, 'especie_salvar'])->name('especiesalvar');
