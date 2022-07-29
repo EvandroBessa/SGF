@@ -727,7 +727,7 @@
                                     <div class="card-header">
                                         <h4 class="card-title">Áreas de Conservação</h4>
                                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                                        <div class="heading-elements" >
+                                        <div class="heading-elements" id="addArea-modal">
                                             <span id="add-area" class="h4" data-toggle="modal" data-target="#xlarge-area"><i class="ft-plus-circle info" title="Adicionar"></i> Adicionar</span>
                                         </div>
                                     </div>
@@ -775,7 +775,7 @@
                                         <div class="modal-body">
                                             <div class="row">
                                                 <div class="col-12 col-xl-12">
-                                                    <form id="area-form" class="form form-horizontal" method="POST" >
+                                                    <form id="area-form" class="form form-horizontal" method="POST" data-formType="create">
                                                         @csrf
                                                         <div id='doc-infoContent'>
                                                             <div class='form-group row'>
@@ -785,41 +785,29 @@
                                                                     <span></span>
                                                                 </div>
                                                             </div>
-                                                                {{-- <div class="form-group row">
-                                                                    <label class="col-md-12" for="sigla">Nome U</label><br>
-                                                                    <div class="col-md-12 mx-auto">
-                                                                        <input type="text" id="nomeUtilizador" class="form-control mb-1"  name="nomeUtilizador" required>
-                                                                        <span></span>
-                                                                    </div>
-                                                                </div> --}}
+
                                                             <div class="form-group row">
                                                                 <div class="col-md-12 mx-auto">
-                                                                    <label for="exampleSelectGender">Localização</label>
-                                                                    <select class="form-control"  id="id_municipio" name="id_municipio">
-                                                                        <option id="municipios">Selecione a Localização</option>
-                                                                            {{-- @foreach($moradas as $morada)
-                                                                                <option value="{{$morada->id}}">{{$morada->nome_municipio}}</option>
-                                                                            @endforeach --}}
+                                                                    <label for="exampleSelectGender">Provincia</label>
+                                                                    <select class="form-control"  aria-label="Default select example" id="id_provincias" name="id_provincias" required>
+                                                                        <option id="provincias" selected disabled>Selecione a Provincia</option>
+                                                                    </select>
+                                                                    <span></span>
+                                                                </div>
+                                                                <div class="col-md-12 mx-auto">
+                                                                    <label for="exampleSelectGender">Municipio</label>
+                                                                    <select class="form-control"  aria-label="Default select example" id="id_municipio" name="id_municipio" required>
+                                                                        <option id="municipios" selected disabled>Selecione o Municipio</option>
                                                                     </select>
                                                                     <span></span>
                                                                 </div>
                                                             </div>
-                                                                {{-- <div class="form-group row">
-                                                                    <div class="col-md-12 mx-auto">
-                                                                        <select class="form-control mb-1" aria-label="Default select example" name="estado" id="estado" required>
-                                                                            <option selected disabled>Escolha o Estado</option>
-                                                                            <option value="Activo">Activo</option>
-                                                                            <option value="Inactivo">Inactivo</option>
-                                                                        </select>
-                                                                        <span></span>
-                                                                    </div>
-                                                                </div> --}}
                                                         </div>
                                                         <div class="form-actions">
                                                             <button id="save-area" type="submit" class="btn btn-info" >
                                                                 <i class="la la-check-square-o"></i> Salvar
                                                             </button>
-                                                            <button type="button" class="btn btn-danger mr-1 btn_no" data-dismiss="modal" id="userModal-cancel">
+                                                            <button type="button" class="btn btn-danger mr-1 btn_no pwd-close-modal" data-dismiss="modal" id="userModal-cancel">
                                                                 <i class="ft-x"></i> Cancelar
                                                             </button>
                                                         </div>

@@ -374,44 +374,7 @@ $(function () {
 
 
 
-  // function getAllUsers() {
-
-  //   console.log("Segundo Passo");
-  //   $.ajax({
-  //     type: "GET",
-  //     // url: "{{route('contalistar')}}",
-  //     data: {},
-  //     dataType: "json",
-  //     success: function (response) {
-
-  //       console.log("VERRRRRRR",response);
-
-  //       if (response.user) {
-  //         let users = [];
-
-  //         destroyTable();
-
-  //         response.user.map((user, index) => {
-  //           let editBtn = `<i class="ft-edit edit-user" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}"
-  //                           data-profile="${user.Designacao}" data-status="${user.Estado}" data-toggle="modal" data-target="#xlarge-user" title="Editar"></i>`;
-  //           let editPwdBtn = `<i class="ft-lock edit-pwd ml-1" data-id="${user.UtilizadorId}" data-name="${user.Nome}" data-username="${user.NomeUtilizador}"
-  //                           data-profile="${user.Designacao}" data-status="${user.Estado}" data-toggle="modal" data-target="#edit-pwd" title="Alterar Senha"></i>`;
-
-  //           users.push({user, editBtn, editPwdBtn});
-  //         });
-
-  //         renderTable(users);
-
-  //         editUser();
-  //       }
-  //     },
-  //     error: function (response) {
-  //       console.log(response);
-  //     }
-
-  //   });
-  // }
-
+  
 
 
   function getDigitizerUsers() {

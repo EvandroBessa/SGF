@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Municipio;
+use App\Models\Provincia;
 use App\Models\Area_Conservacao;
 use Illuminate\Support\Facades\Log;
 
@@ -25,9 +26,13 @@ class AreaConservacaoController extends Controller
     }
 
 
-    public function mlistar()
+    public function mlistar(Request $request)
     {
-
+        $id= $request->id_provincia;
+        $municipios = Municipio:: join('provincias', 'provincias.id','=','municipios.id_provincia')
+        ->where('provincias.id',$id)
+        ->get (['municipios.id','municipios.nome_municipio']);
+        return $municipios;
     }
     /**
      * Show the form for creating a new resource.
@@ -36,7 +41,7 @@ class AreaConservacaoController extends Controller
      */
     public function create()
     {
-        $moradas = Municipio::all();
+        $moradas = Provincia::all();
         return $moradas;
 
         // return view ('areaccadastro');
@@ -50,26 +55,14 @@ class AreaConservacaoController extends Controller
      */
     public function store(Request $request)
     {
-        // echo("sssssssssssssssssss: ".$request);
-        // Log::info('quero saber o que e: ' .$request->all());
-
-        // dd($request->all());
-
-        //$teste = $request->get('rel');
-
-        // Log::info('quero saber o que e: ' .$teste);
 
         $areacconservacao = new Area_Conservacao;
         $areacconservacao->nome_area = $request->nome_area;
         $areacconservacao->id_municipio = $request->id_municipio;
 
-        // $areaconservacao-> save();
-        // return redirect('/areaccadastro');
-
-
         $areacconservacao-> save();
 
-         return $areacconservacao;
+        return response()->json($areacconservacao);
 
     }
 
@@ -102,9 +95,14 @@ class AreaConservacaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $areaconservacao = Area_Conservacao::find($request->id);
+        $areaconservacao->nome_area = $request->nome_area;
+        $areaconservacao->id_municipio = $request->id_municipio;
+
+        $areaconservacao->update();
+        return response()->json($areaconservacao);
     }
 
     /**

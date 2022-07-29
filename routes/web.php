@@ -57,7 +57,9 @@ Route::get('/areaccadastro', [AreaConservacaoController::class, 'create'])->name
 Route::post('/areaccadastrando', [AreaConservacaoController::class, 'store']);
 Route::get('/arealistar', [AreaConservacaoController::class, 'index'])->name('arealistar');
 // Route::get('/municipioslistar', [AreaConservacaoController::class, 'mlistar'])->name('municipioslistar');
-Route::post('/cadastroarea', [AreaConservacaoController::class, 'store'])->name('cadastro_area');
+Route::post('/cadastroarea', [AreaConservacaoController::class, 'mlistar'])->name('cadastro_area');
+
+Route::post('/updatearea', [AreaConservacaoController::class, 'update']);
 
 //Rotas do Funcionário
 Route::get('/funcionario_cadastro', [FuncionarioController::class, 'create'])->name('funcionariocadastro');
