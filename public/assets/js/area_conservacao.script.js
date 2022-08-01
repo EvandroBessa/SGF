@@ -352,9 +352,6 @@ $(function () {
         $('#areaForm-title').text('Editar Arae de Conservaçao');
         // $("#user-form").attr('data-formType', 'edit');
         $('#area-form').append(`<input type="hidden" id="edit-areaId" name="edit-areaId" value="${id}"/>`);
-
-
-
   }
 
   function destroyTable(){
@@ -365,6 +362,170 @@ $(function () {
 
 
 
+  $("#list-area").on("click",function (element) {
+
+    $("#box-row").removeClass("hidden");
+    $("#area-container").addClass("hidden");
+    $("#user-container").addClass("hidden");
+    $("#box-container").addClass("hidden");
+    $('#userStatsContainer').addClass('hidden');
+    $('#provinceStatsContainer').addClass('hidden');
+    $('#globalGraphContainer').addClass('hidden');
+    $('#monthlyStatsContainer').addClass('hidden');
+    $('#monthlyUserStatsContainer').addClass('hidden');
+    $('#provinceUserStatsContainer').addClass('hidden');
+    $("#animal-container").addClass("hidden");
+
+    $.ajax({
+        type: "GET",
+        url: "/arealistar",
+        contentType: "application/json",
+        data: JSON.stringify(),
+        dataType: "json",
+        async: true,
+        cache: false,
+        success: function (response) {
+
+            if(response != undefined){
+                home.clearDiv('accordionCryptoTypes');
+                // Clear details div
+                home.clearDiv('details_div');
+                home.addDiv('details_div', 'details');
+
+                //Total de areas de conservaçao
+                response.length ? $('#totalProvince').text(response.length) : $('#totalProvince').text('');
+
+                response.forEach((box, index) => {
+
+                    home.addDiv('accordionCryptoTypes', 'area_boxes');
+                    $('#area_boxes').append(appendAreaBoxes(box, index));
+                });
+
+                home.addScroll('accordionCryptoTypes');
+
+            }else{
+
+                home.clearDiv('accordionCryptoTypes');
+                home.addDiv('accordionCryptoTypes', 'province_boxes');
+
+                $document.find('#area_boxes').append(response.error);
+                // toastr.warning('Não existe(m) Areas(s) Criadas', 'Aviso!', { "timeOut": 5000 });
+            }
+
+            home.clearDiv('accordionCrypto');
+            home.clearDiv('accordionCryptoDocs');
+            home.clearDiv('iframeMain');
+        },
+        error: function (response) {
+            console.log(response)
+        }
+    });
+
+});
+
+
+function appendAreaBoxes(box, index){
+
+    //Append remove button if admin
+    let btnRemove = document.cookie.indexOf('Administrador') !== -1 ?
+                            "<div class='remove-box-btn mt-1 ml-1' >"+
+                                "<i class='ft-trash-2 remove-box danger' data-id='"+box.id+"' data-toggle='modal' data-target='#confirm' title='Remover'  style='font-size: 25px;'></i>"
+                            + "</div>"
+                            : "";
+
+    let boxData =   "<div class='box_div' id='box_"+box.id+"' style='display: flex; justify-content: space-between;'>"+
+                        "<div  class='card accordion collapse-icon accordion-icon-rotate box-card w-100' data-id="+box.id+" data-name='"+box.nome_area+"''>"+
+                            "<a id='heading31' data-toggle='collapse' href='#accordionBTC"+index+"' aria-expanded='true' aria-controls='accordionBTC"+index+"' class='card-header bg-success bg-gradient p-1 bg-lighten-1'>"+
+                                "<div class='card-title lead white'>"+ box.nome_area +"</div>"+
+                            "</a>"+
+                            "<div id='accordionBTC"+index+"' role='tabpanel' data-parent='#accordionCryptoTypes' aria-labelledby='heading31' class='collapse' aria-expanded='true'>"+
+                                "<div id='folder_div"+box.id+"'>" +
+                                    "<div id='folders"+box.id+"'></div>"+
+                                "</div>"+
+                            "</div>"+
+                        "</div>"+
+                    "</div>"
+                    _handleBoxCardClick(box);
+    return boxData;
+}
+
+
+
+function _handleBoxCardClick(element) {
+
+    console.log("DDDDDDDDDDDD",element);
+
+    let boxId = element.id;
+    let boxName = element.nome_area;
+    let boxIdentifier = boxName.split('CX0000');
+
+    $document.find('#form-validate').attr('data-form-val', boxName);
+
+    // Clear search input and content
+    $document.find('#accordionCrypto').children('div').remove();
+    $document.find('#docSearch').val('');
+
+    $.ajax({
+        type: "GET",
+        url: "/area-animal/" + boxId + "",
+        contentType: "application/json",
+        data: JSON.stringify(),
+        dataType: "json",
+        async: true,
+        cache: false,
+        success: function (response) {
+
+           console.log('Animais: ', response);
+          if (response.length=== 1) {
+
+            home.clearDiv('folder_div' + boxId + '');
+            home.addDiv('folder_div' + boxId + '', 'folders' + boxId + '');
+
+            localStorage.setItem('boxName', boxName);
+
+
+            response.forEach((pasta, index) => {
+
+              $('#folders' + boxId + '').append(
+                "<div class='card-content folderList' data-id='" + pasta.id + "' data-name='" + pasta.nome_vulgar + "' data-folder='" + pasta.nome_vulgar + "'>" +
+                  "<div class='card-body p-0'>" +
+                    "<div class='media-list list-group' id='box_content'>" +
+                        "<div class='list-group-item list-group-item-action media p-1'>" +
+                          "<a href='#' class='media-link'>" +
+                            "<div class='media-left'>" +
+                              "<p class='text-bold-600 m-0' id='box_name'>" + pasta.nome_vulgar + "</p>" +
+                            "</div>" +
+                          "</a>" +
+                      "</div>" +
+                    "</div>" +
+                  "</div>" +
+                "</div>"
+              );
+
+            });
+
+          } else {
+
+            home.clearDiv('folder_div' + boxId + '');
+            home.addDiv('folder_div' + boxId + '', 'folders' + boxId + '');
+
+            $document.find('#folders' + boxId).append(`<h1>Não existe(m) Animais(s) nesta Area de Conservaçao</h3>`);
+            // toastr.warning('Não existe(m) Pasta(s) nesta Caixa', 'Aviso!', { "timeOut": 2500 });
+
+            home.clearDiv('accordionCrypto'); //LIMPAR A DIV QUE EXIBE OS DOCS QUANDO NÃO EXISTE
+
+            home.setTotalDocumentsCount(''); //LIMPAR O TATAL DOCS QNUANDO É 0
+          }
+          home.clearDiv('accordionCryptoDocs');
+          home.clearDiv('iframeMain');
+          // getBoxDetailsFolders();
+        },
+        error: function (response) {
+          console.log(response)
+        }
+      });
+
+};
 
 
 

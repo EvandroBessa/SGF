@@ -18,7 +18,7 @@ class AnimalController extends Controller
     {
         $especies = Especie::all();
         return response()->json($especies);
-       
+
     }
 
 
@@ -39,13 +39,13 @@ class AnimalController extends Controller
 
         // $validar = $request->validate($regras,$mensagens);
         $animal = new Animal;
-        
+
         $animal->nome_cientifico = $request->nome_cientifico;
         $animal->nome_vulgar = $request->nome_vulgar;
         $animal->id_especie = $request->especie;
 
         $animal-> save();
-        return redirect('/animalcadastro')->with('animal','Animal Cadastrado com Sucesso');
+        return response()->json($animal);
     }
 
 }

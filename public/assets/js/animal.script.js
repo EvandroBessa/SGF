@@ -51,17 +51,19 @@ $(function () {
     $("#animal-form").on("submit",function (element) {
         element.preventDefault();
 
-        let nome_cientifico = $("#nome_area").val();
-        let id_municipio = $("#id_municipio option:selected").val();
+        let nome_cientifico = $("#nome_cientifico").val();
+        let nome_vulgar = $("#nome_vulgar").val();
+        let especie = $("#especie option:selected").val();
         // let estado = $("#estado option:selected").val();
-         let formType = $('#area-form')[0].dataset.formtype;
+         let formType = $('#animal-form')[0].dataset.formtype;
 
         let AreaFormData = {
-          nome_area: nome_area,
-          id_municipio: id_municipio,
+            nome_cientifico: nome_cientifico,
+            nome_vulgar: nome_vulgar,
+            especie: especie,
         };
 
-        (formType === 'create') ? createAanimal(AreaFormData) : updateAnimal(AreaFormData);
+        (formType === 'create') ? createAnimal(AreaFormData) : updateAnimal(AreaFormData);
     });
 
     function createAnimal(AreaFormData){
@@ -77,14 +79,14 @@ $(function () {
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify(AreaFormData) ,
-            url: "/areaccadastrando",
+            url: "/animalcadastro",
             async: true,
             cache: false,
             success: function (response) {
                 console.log('TESTANDO: ', response);
 
                 if (response) {
-                    toastr.success(response.mensagem, "Cadastro da Area de Conservaçao!", {
+                    toastr.success(response.mensagem, "Cadastro do animal!", {
                     showMethod: "slideDown",
                     hideMethod: "slideUp",
                     timeOut: 1000,
@@ -92,8 +94,8 @@ $(function () {
                         //Hide modal
                         $('.btn_no').trigger('click');
 
-                        $("#area-table tbody tr").remove();
-                        getAreas();
+                        //$("#area-table tbody tr").remove();
+                        //getAreas();
                     },
 
                     });

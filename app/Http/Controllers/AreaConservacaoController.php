@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Municipio;
 use App\Models\Provincia;
+use App\Models\Animal;
 use App\Models\Area_Conservacao;
 use Illuminate\Support\Facades\Log;
 
@@ -74,7 +75,10 @@ class AreaConservacaoController extends Controller
      */
     public function show($id)
     {
-        //
+        $Animais = Animal:: join('areas_conservacoes', 'areas_conservacoes.id','=','animais.id_area_conservacao')
+        ->where('areas_conservacoes.id',$id)
+        ->get (['animais.id','animais.nome_vulgar','animais.nome_cientifico','animais.tempo_vida']);
+        return $Animais;
     }
 
     /**

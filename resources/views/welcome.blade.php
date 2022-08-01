@@ -3,7 +3,7 @@
 @section('conteudo')
 
           <!-- BEGIN: Content-->
-          <div class="app-content content h-100">
+        <div class="app-content content h-100">
             <div class="content-overlay"></div>
             <!-- BEGIN: OVERLAY DA PESQUISA GLOBAL-->
             <div id="sgq-global-searchBar-overlayer" class="h-100">
@@ -143,24 +143,24 @@
                         <div class="col-12 col-xl-4">
                             <div class="card-header">
                                 <h4 class="card-title position-relative">
-                                    <span class="position-relative">Animais</span>
+                                    <span class="position-relative">Áreas de Conservação</span>
                                     <div class="form-control-position" style="top: -9px !important; cursor: pointer;" id="refreshBoxes">
                                         <i class="ft-refresh-ccw font-medium-4" title="Atualizar"></i>
                                     </div>
-                                    <span class="position-relative badge badge-info badge-pill ml-1" id="totalProvince"></span>
+                                    <span class="position-relative badge badge-success badge-pill ml-1" id="totalProvince"></span>
 
 
                                 </h4>
                             </div>
                             <div class="form-group position-relative mt-1">
-                                <input type="text" class="form-control form-control-lg input-lg mb-1" id="boxSearch" placeholder="Pesquisar Animais">
+                                <input type="text" class="form-control form-control-lg input-lg mb-1" id="boxSearch" placeholder="Pesquisar Áres de Conservação">
                                 <div class="form-control-position">
                                     <label for="boxSearch"><i class="icon-magnifier danger font-medium-4"></i></label>
                                 </div>
                             </div>
                             <br>
                             <div id="accordionCryptoTypes" role="tablist" aria-multiselectable="true">
-                                <div id="province_boxes"></div>
+                                <div id="area_boxes"></div>
 
                             </div>
 
@@ -188,7 +188,7 @@
                         <div class="col-12 col-xl-4">
                             <div class="card-header">
                                 <h4 class="card-title">
-                                    <span class="position-relative">Caracteristicas</span>
+                                    <span class="position-relative">Animais</span>
                                     <div class="form-control-position" style="top: 13px !important; right: 36px !important; cursor: pointer;" id="refreshDocs">
                                         <i class="ft-refresh-ccw font-medium-4" title="Atualizar"></i>
                                     </div>
@@ -196,7 +196,7 @@
                                 </h4>
                             </div>
                             <div class="form-group position-relative mt-1">
-                                <input type="text" class="form-control form-control-lg input-lg mb-1" id="docSearch" placeholder="Pesquisar Caracteristicas">
+                                <input type="text" class="form-control form-control-lg input-lg mb-1" id="docSearch" placeholder="Pesquisar Animais">
                                 <div class="form-control-position">
                                     <label for="docSearch"><i class="icon-magnifier danger font-medium-4"></i></label>
                                 </div>
@@ -503,7 +503,7 @@
                                     <div class="card-body">
                                         <h4 class="card-title">Dados do Animal</h4>
                                         <p class="card-description"></p>
-                                        <form class="forms-sample" id="animal-form" method="POST" >
+                                        <form class="forms-sample" id="animal-form" method="POST" data-formType="create">
                                             @csrf
                                             <div class="form-group">
                                                 <label for="exampleInputName1">Nome Científico</label>
@@ -528,7 +528,7 @@
                                                 <label for="exampleSelectGender">Especie</label>
                                                 <select class="form-control {{$errors->has('especie') ? 'is-invalid' : ''}}"  id="especie" name="especie">
                                                     <option value="">Selecione a especie</option>
-                                                    
+
                                                 </select>
                                                 @if($errors->has('especie'))
                                                     <div class="invalid-feedback">
@@ -1221,5 +1221,140 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
+        <div class="sidenav-overlay"></div>
+
+        <!-- MODAL DA PESQUISA GLOBAL-->
+        <div id="sgq-global-searchBar-modal" hidding class="row position-fixed w-100 h-100 p-2 py-4 m-0 d-flex justify-content-center align-content-center">
+            <div class="sgq-gSB-modal-box animate__animated animate__backOutUp row w-100 h-100 rounded" sgq-data-provinceid="0" sgq-data-boxId="0" sgq-data-folderId="0" sgq-data-documentId="0">
+                <div class="col pt-4 h-100" style="max-width: 250px; min-width: 250px">
+                    <div class="sgq-gSB-modal-box-box-info row p-1 pt-4">
+                        <div class="col">
+                            <div class="rr-item-box w-100 shadow-sm bg-white border-top-info border-bottom-info rounded position-relative p-1 pb-2">
+                                <span class="la la-archive d-block w-100 text-center text-info" style="font-size: 12rem;"></span>
+                                <span class="font-weight-bold text-center">
+                                    <span id="sgq-gSB-modal-boxname" class="d-block" style="font-size: 2rem;">
+                                        CX0000A0
+                                    </span>
+                                    <span id="sgq-gSB-modal-province" class="text-warning d-block font-weight-bolder"> PROVINCIA </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row p-1 pt-2" style="height: calc(100% - 328px);">
+                        <div class="col p-0 m-0 w-100 h-100">
+                            <h6 class="text-light text-center w-100">
+                                Pastas na Caixa <span class="sgq-gSB-modal-boxname-tag">CX0000A1</span>
+                            </h6>
+                            <div id="sgq-gSB-modal-box-folder-list-vertical-scroll" class="position-relative w-100" style="height: 100%;">
+                                <div id="sgq-gSB-modal-box-folder-list" class="row m-0 pb-5 pt-1 w-100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col bg-white p-0 h-100">
+                    <nav class="sgq-gSB-modal-box-header row m-0 w-100 p-1 pt-3 pb-3 d-flex align-items-center" style="max-height: 98px; height:98px;">
+                        <h6 class=" m-0">
+                            Item de Pesquisa -
+                            <span class="sgq-gSB-modal-province-tag-control">
+                                Provincia: <strong class="sgq-gSB-modal-province-tag">NOME DA PROVINCIA</strong>
+                            </span>
+                            <span class="sgq-gSB-modal-boxname-tag-control">
+                                Caixa: <strong class="sgq-gSB-modal-boxname-tag">CX0000A0</strong>
+                            </span>
+                            <span class="sgq-gSB-modal-foldername-tag-control">
+                                <span class="la la-angle-right"></span>
+                                Pasta: <strong class="sgq-gSB-modal-foldername-tag">PT000000</strong>
+                            </span>
+                            <span class="sgq-gSB-modal-associatename-tag-control">
+                                <span class="la la-angle-right"></span>
+                                Documento: <strong class="sgq-gSB-modal-associatename-tag">Nome Associado</strong>
+                            </span>
+                        </h6>
+                    </nav>
+                    <div class="sgq-gSB-modal-box-container row m-0 w-100" style="min-height: calc(100% - 98px); height: calc(100% - 98px)">
+                        <div class="col p-0 h-100 border-right-light" style="max-width: 280px; min-width: 280px;">
+                            <h6 class="p-2 m-0 border-top-light border-bottom-light" style="background-color: #f7f7f7 !important;">
+                                Documentos
+                                <span id="sgq-gSB-modal-document-founded" class="badge badge-dark bg-info float-right" style="margin-top: -5px;font-size: 14px;">0 Encontrados</span>
+                            </h6>
+
+                            <div id="sgq-gSB-modal-box-document-list-vertical-scroll" class="position-relative" style="height: calc(100% - 60px);">
+                                <div id="sgq-gSB-modal-box-document-list" class="sgq-list-group m-0 p-0"></div>
+                            </div>
+                        </div>
+
+                        <div class="col p-0 h-100">
+                            <div class="row m-0 w-100 h-100">
+                                <div class="col p-0 h-100 border-right-light" style="max-width: 280px; min-width: 280px;">
+                                    <h6 class="p-2 m-0 border-top-light border-bottom-light" style="background-color: #f7f7f7 !important;">
+                                        Campos Documento
+                                    </h6>
+                                    <div id="sgq-gSB-modal-box-document-info-vertical-scroll" class="position-relative" style="height: calc(100% - 60px);">
+                                        <div class="sgq-list-document-info">
+                                            <div class="p-1 border-bottom-light">
+                                                <div class="form-group mb-0">
+                                                    <label for="sgq-gSB-modal-box-document-input-nomeassociado">Nome do Associado:</label>
+                                                    <input readOnly type="text" id="sgq-gSB-modal-box-document-input-nomeassociado" value="" class="form-control" placeholder="Nome Associado" name="nomeassociado">
+                                                </div>
+                                            </div>
+                                            <div class="p-1 border-bottom-light">
+                                                <div class="form-group mb-0">
+                                                    <label for="sgq-gSB-modal-box-document-input-nomeassociado">Numero de Inscrição:</label>
+                                                    <input readOnly type="text" id="sgq-gSB-modal-box-document-input-numeroinscricao" value="" class="form-control" placeholder="Numero de Inscrição" name="ninscricao">
+                                                </div>
+                                            </div>
+                                            <div class="p-1 border-bottom-light">
+                                                <div class="form-group mb-0">
+                                                    <label for="sgq-gSB-modal-box-document-input-numerobi">Numero do B.I:</label>
+                                                    <input readOnly type="text" id="sgq-gSB-modal-box-document-input-numerobi" value="" class="form-control" placeholder="Numero do B.I" name="nbi">
+                                                </div>
+                                            </div>
+                                            <div class="p-1 border-bottom-light">
+                                                <div class="form-group mb-0">
+                                                    <label for="sgq-gSB-modal-box-document-input-orgao">Orgão:</label>
+                                                    <input readOnly type="text" id="sgq-gSB-modal-box-document-input-orgao" value="" class="form-control" placeholder="Orgão" name="orgao">
+                                                </div>
+                                            </div>
+                                            <div class="p-1 border-bottom-light">
+                                                <div class="form-group mb-0">
+                                                    <label for="sgq-gSB-modal-box-document-input-nomepai">Nome do Pai:</label>
+                                                    <input readOnly type="text" id="sgq-gSB-modal-box-document-input-nomepai" value="" class="form-control" placeholder="Nome do Pai" name="nomepai">
+                                                </div>
+                                            </div>
+                                            <div class="p-1 border-bottom-light">
+                                                <div class="form-group mb-0">
+                                                    <label for="sgq-gSB-modal-box-document-input-nomemae">Nome da Mãe:</label>
+                                                    <input readOnly type="text" id="sgq-gSB-modal-box-document-input-nomemae" value="" class="form-control" placeholder="Nome da Mãe" name="nomemae">
+                                                </div>
+                                            </div>
+                                            <div class="p-1 border-bottom-light">
+                                                <div class="form-group mb-0">
+                                                    <label for="sgq-gSB-modal-box-document-estadodocumento">Estado do Documento:</label>
+                                                    <span id="sgq-gSB-modal-box-document-estadodocumento" class="form-control d-flex justify-content-center border-success text-success" name="estadodocumento"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col p-0 h-100">
+                                    <iframe id="sgq-gSB-selected-document-image" class="row m-0 p-0" src="http://localhost:9090/src/files/documents/Nao-Encontrado.pdf" frameborder="0" style="width: 100%;height: calc(100% - 68px);"></iframe>
+                                    <div class="row p-1 m-0 border-top-light d-flex justify-content-end" style="background-color: #f7f7f7 !important; height: 68px; min-height: 68px">
+                                        <button id="sgq-gSB-button-open-document" type="button" class="comming-soon btn btn-info btn-min-width mr-2 position-relative">Editar Documento</button>
+                                        <button id="sgq-gSB-button-close" type="button" class="btn btn-secondary btn-min-width" sgq-gSB-handle-modal="close">Fechar Janela</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
 @endsection

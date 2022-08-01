@@ -58,7 +58,7 @@ Route::post('/areaccadastrando', [AreaConservacaoController::class, 'store']);
 Route::get('/arealistar', [AreaConservacaoController::class, 'index'])->name('arealistar');
 // Route::get('/municipioslistar', [AreaConservacaoController::class, 'mlistar'])->name('municipioslistar');
 Route::post('/cadastroarea', [AreaConservacaoController::class, 'mlistar'])->name('cadastro_area');
-
+ Route::get('/area-animal/{id}', [AreaConservacaoController::class, 'show']);
 Route::post('/updatearea', [AreaConservacaoController::class, 'update']);
 
 //Rotas do Funcionário

@@ -151,7 +151,7 @@
                         <ul class="menu-content">
                             <li><a class="menu-item" href="#" id="register-area"><i class="material-icons"></i><span data-i18n="Buttons">Cadastrar</span></a>
                             </li>
-                            <li><a class="menu-item" href="#"><i class="material-icons"></i><span data-i18n="Cards">Listar</span></a>
+                            <li><a class="menu-item" href="#"id="list-area"><i class="material-icons"></i><span data-i18n="Cards">Listar</span></a>
                             </li>
 
 
