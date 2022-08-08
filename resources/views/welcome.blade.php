@@ -1165,7 +1165,7 @@
                         <div class="col-md-12 col-sm-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="province-stats-title">Estatísticas - Documentos Verificados Por Provincia</h4>
+                                    <h4 class="card-title" id="province-stats-title">Estatísticas - Animais Cadastrados Por Provincia</h4>
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 </div>
                                 <div class="card-content show">

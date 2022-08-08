@@ -182,6 +182,29 @@ $('#province-stats').on('click', function(element){
       // $('#statistics-title').text('Estatísticas - Caixas');
 });
 
+
+$('#animal-province-stats').on('click', function(element){
+
+    $('#user-container').addClass('hidden');
+    $('#box-row').addClass('hidden');
+    $('#box-container').addClass('hidden');
+    $('#userStatsContainer').addClass('hidden');
+    $('#provinceStatsContainer').removeClass('hidden');
+    $('#globalGraphContainer').addClass('hidden');
+    $('#monthlyStatsContainer').addClass('hidden');
+    $('#monthlyUserStatsContainer').addClass('hidden');
+    $('#provinceUserStatsContainer').addClass('hidden');
+
+    const adminDigit = element.currentTarget.getAttribute('admin-dig');
+
+
+    adminDigit ? getTotalDigitizedByProvince() : getTotalValidatedByProvince();
+    // Set Main Title
+    // $('#statistics-title').text('Estatísticas - Províncias');
+    // $('#statistics-title').text('Estatísticas - Caixas');
+});
+
+
 // Render graph by Users
 $('#user-stats').on('click', function(element){
       $('#user-container').addClass('hidden');
@@ -370,7 +393,7 @@ $('#date_verified').on('change', function(element){
 function getTotalValidatedByProvince(){
   $.ajax({
     type: "GET",
-    url: "/get-total-validated",
+    url: "/animal_total_province",
     contentType: "application/json",
     data: JSON.stringify(),
     dataType: "json",
@@ -378,16 +401,16 @@ function getTotalValidatedByProvince(){
     cache: false,
     success: function(response) {
         console.log("Total Validated", response);
-        if(response.totalValidated != undefined){
+        if(response!= undefined){
           //Empty labels
           $labels.length = 0;
           $totalValidated.length = 0;
 
-          response.totalValidated.map(province => {
-            if(!$labels.includes(province.Provincia))
+          response.map(province => {
+            if(!$labels.includes(province.nome_provincia))
               {
-                  $labels.push(province.Provincia);
-                  $totalValidated.push(province.TotalVerificado);
+                  $labels.push(province.nome_provincia);
+                  $totalValidated.push(province.Total);
               }
           });
 

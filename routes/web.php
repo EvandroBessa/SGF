@@ -78,6 +78,7 @@ Route::get('/animalcadastro', [AnimalController::class, 'formulario_animal'])->n
 Route::post('/animalcadastro', [AnimalController::class, 'salvar_animal'])->name('animalpcadastro');
 Route::get('/animal_listar', [AnimalController::class, 'listar_animal'])->name('animallistar');
 Route::get('/animal_total', [AnimalController::class, 'cont_animal']);
+Route::get('/animal_total_province', [AnimalController::class, 'animal_province']);
 
 
 //rotas de gestão de filos

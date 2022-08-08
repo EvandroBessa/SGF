@@ -197,12 +197,15 @@
                         <ul class="menu-content">
                             <li><a class="menu-item" href="#" id="geral-stats"><i class="material-icons"></i><span data-i18n="Basic Forms">Cadastrados Geral</span></a>
                             </li>
+                            <li><a class="menu-item" href="#" id="animal-province-stats"><i class="material-icons"></i><span data-i18n="Horizontal Forms">Cadastrados - Provincia</span></a>
+                            </li>
                             <li><a class="menu-item" href="form-layout-horizontal.html"><i class="material-icons"></i><span data-i18n="Horizontal Forms">Cadastrados - Mensal</span></a>
                             </li>
                             <li><a class="menu-item" href="form-layout-hidden-labels.html"><i class="material-icons"></i><span data-i18n="Hidden Labels">Cadastrados - dia</span></a>
                             </li>
 
                         </ul>
+
                     </li>
 
 
