@@ -195,7 +195,7 @@
                             <span class="menu-title" data-i18n="Components">Estatísticas</span>
                         </a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="form-layout-basic.html"><i class="material-icons"></i><span data-i18n="Basic Forms">Cadastrados Geral</span></a>
+                            <li><a class="menu-item" href="#" id="geral-stats"><i class="material-icons"></i><span data-i18n="Basic Forms">Cadastrados Geral</span></a>
                             </li>
                             <li><a class="menu-item" href="form-layout-horizontal.html"><i class="material-icons"></i><span data-i18n="Horizontal Forms">Cadastrados - Mensal</span></a>
                             </li>
@@ -422,7 +422,7 @@
     <script src="{{asset("assets/plugins/jquery-cookie/src/jquery.cookie.js")}}"></script>
 
     {{--  Charts  --}}
-    {{-- <script src="{{asset("assets/js/charts/sigarq-apexcharts.js")}}"></script> --}}
+    <script src="{{asset("assets/js/charts/sigarq-apexcharts.js")}}"></script>
 
     {{--  Moment.JS  --}}
     <script src="{{asset("assets/plugins/moment/moment.js")}}"></script>

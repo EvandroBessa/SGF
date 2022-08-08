@@ -152,7 +152,7 @@ let documents = (function (_document, $) {
     function getSociosByFolder(folderId, validated = false) {
         $.ajax({
             type: "GET",
-            url: "/documents/folder/" + folderId + "",
+            url: "/area-animal/" + folderId + "",
             data: JSON.stringify(),
             dataType: "json",
             success: function (response) {
@@ -161,18 +161,18 @@ let documents = (function (_document, $) {
 
                 console.log("Requisição de Documentos: ", response);
 
-                if (response.documents !== undefined) {
+                if (response.length !== 0) {
                     // SET SELECTED FOLDER NAME Only if document is not validated
                     localStorage.setItem("folderName", folderId);
-                    home.setTotalDocumentsCount(response.documents.length);
+                    home.setTotalDocumentsCount(response.length);
 
                     // Append filter buttons
                     $docParentDiv.prepend(`
                                     <div class="row">
                                         <div class="col-5 pr-0">
                                             <div class="btn-group w-50 mb-2">
-                                                <button type="button" class="btn btn-info text-uppercase h-4">Filtrar</button>
-                                                <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+                                                <button type="button" class="btn btn-success text-uppercase h-4">Filtrar</button>
+                                                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item doc-status" id='get-validated' folderId='${folderId}' filter-type='validated' href="#">Validado</a>
                                                     <a class="dropdown-item doc-status" filter-type='not_validated' href="#">Não Validado</a>
@@ -182,7 +182,7 @@ let documents = (function (_document, $) {
                                         </div>
                                         <div class="col pl-0">
                                             <div class="w-100 bg-white pl-1 rounded d-flex align-items-center mb-2" style="height: 40px">
-                                                <span>Total de Documentos <strong id="filterTotalDoc" class="bg-info text-white rounded font-weight-normal" style="padding: 4px;">---</strong> </span>
+                                                <span>Total de Animais <strong id="filterTotalDoc" class="bg-success text-white rounded font-weight-normal" style="padding: 4px;">---</strong> </span>
                                             </div>
                                         </div>
                                     </div>
@@ -193,9 +193,9 @@ let documents = (function (_document, $) {
                     console.log(folderId);
                     $document
                         .find("#filterTotalDoc")
-                        .text(response.documents.length); //Docs not validated
+                        .text(response.length); //Docs not validated
 
-                    response.documents.map((document) => {
+                    response.map((document) => {
                         console.log("o que é isso:  ",document);
                         appendSociosInfo(document);
                     });
@@ -207,7 +207,7 @@ let documents = (function (_document, $) {
                     home.setTotalDocumentsCount(0);
                     localStorage.setItem("folderName", ""); //Clear local storage value
                     $("#docs").append(
-                        `<h1>Não existe(m) documento(s) nesta Pasta</h3>`
+                        `<h1>Não existe(m) Animal(s) nesta Área de Conservação</h3>`
                     );
                 }
 
@@ -365,26 +365,26 @@ let documents = (function (_document, $) {
 
     function _addDocContent(documento) {
         //Format name for easy reference call
-        let not = documento.EstadoDocumento.split(" ")[0];
-        let validated = documento.EstadoDocumento.split(" ")[1]
-            ? documento.EstadoDocumento.split(" ")[1]
+         let not = documento.nome_vulgar.split(" ")[0];
+        let validated = documento.nome_vulgar.split(" ")[1]
+            ? documento.nome_vulgar.split(" ")[1]
             : "";
         let status = not + "_" + validated;
         //Append remove button if admin
         let btnRemove =
-            userRole === "Administrador"
+            userRole !== "Administrador"
                 ? "<div class='remove-doc-btn mt-3 ml-1 " +
                   status +
                   "_btn' >" +
                   "<i class='ft-trash-2 remove-doc danger' data-id='" +
-                  documento.SocioId +
+                  documento.id +
                   "' data-box='" +
-                  documento.Caixa +
+                  documento.nome_cientifico +
                   "' data-folder='" +
-                  documento.Pasta +
+                  documento.nome_vulgar +
                   "'" +
                   " data-province='" +
-                  documento.Orgao +
+                  documento.nome_vulgar +
                   "' data-toggle='modal' data-target='#confirm' title='Remover'  style='font-size: 25px;'></i>" +
                   "</div>"
                 : "";
@@ -394,39 +394,39 @@ let documents = (function (_document, $) {
         // let Documento = JSON.parse(documento.Documento.replace(/\[|\]/g, ""));
         // console.log("VERRRRRR: ", documento);
         let box =
-            documento.Caixa !== undefined
-                ? documento.Caixa
+            documento.nome_vulgar !== undefined
+                ? documento.nome_vulgar
                 : localStorage.getItem("boxName");
         let folder =
-            documento.Pasta !== undefined
-                ? documento.Pasta
+            documento.nome_cientifico !== undefined
+                ? documento.nome_cientifico
                 : localStorage.getItem("folder");
 
         return (
             "<div class='card-body p-0 docsList " + status +
-            "' data-id='" + documento.SocioId +
+            "' data-id='" + documento.id +
             "' " +
-            " data-nomeAssoc='" + `${documento.NomeAssociado ? documento.NomeAssociado : ""}` +
-            "'data-numAssoc='" + `${documento.NumeroAssociado ? documento.NumeroAssociado : ""}` +
+            " data-nomeAssoc='" + `${documento.nome_cientifico ? documento.nome_cientifico : ""}` +
+            "'data-numAssoc='" + `${documento.nome_vulgar ? documento.nome_vulgar : ""}` +
             "' " +
-            " data-nBI='" + `${documento.NBi ? documento.NBi : ""}` +
+            " data-nBI='" + `${documento.tempo_vida ? documento.tempo_vida : ""}` +
             "' data-estado='" + `${
-                documento.EstadoDocumento
-                    ? documento.EstadoDocumento
+                documento.tempo_vida
+                    ? documento.tempo_vida
                     : "NAO VALIDADO"
-            }` + "' " + " data-nPai='" + `${documento.NomePai ? documento.NomePai : ""}` +
-            "' data-nMae='" + `${documento.NomeMae ? documento.NomeMae : ""}` +
-            "' " + " data-Orgao='" + `${documento.Orgao ? documento.Orgao : ""}` +
+            }` + "' " + " data-nPai='" + `${documento.nome_vulgar ? documento.nome_vulgar : ""}` +
+            "' data-nMae='" + `${documento.nome_cientifico ? documento.nome_cientifico : ""}` +
+            "' " + " data-Orgao='" + `${documento.tempo_vida ? documento.tempo_vida : ""}` +
             "' data-toggle='modal' data-target='#xlarge' > " + "<div class='media-list list-group' id='docs_content" +
-            documento.SocioId + "'>" +
+            documento.id + "'>" +
             "<div class='list-group-item list-group-item-action media p-1'>" +
             "<div class='media-left'>" +
-            "<p class='text-bold-600 m-0' id='doc_name'>" + `${documento.NomeAssociado}` + "</p>" +
+            "<p class='text-bold-600 m-0' id='doc_name'>" + `${documento.nome_vulgar}` + "</p>" +
             "<h6 class='font-small-2 text-muted mb-0' id='doc_name'>" +
-            `${documento.NumeroAssociado ? documento.NumeroAssociado : ""}` +
+            `${documento.nome_cientifico ? documento.nome_cientifico : ""}` +
             "</h6>" +
             "<h6 class='font-small-2 text-muted mb-0' id='doc_name'>" +
-            `${documento.NBi ? documento.NBi : ""}` +
+            `${documento.tempo_vida ? documento.tempo_vida : ""}` +
             "</h6>" +
             "<h6 class='font-small-2 text-muted mb-0' id='doc_name'>" +
             `${box}` +
@@ -436,12 +436,12 @@ let documents = (function (_document, $) {
             "</h6>" +
             "<h6 class='font-small-3 mb-0 " +
             `${
-                documento.EstadoDocumento === "VALIDADO"
+                documento.tempo_vida === "VALIDADO"
                     ? "text-success"
                     : "text-danger"
             }` +
             "' id='doc_name'>" +
-            `${documento.EstadoDocumento ? documento.EstadoDocumento : ""}` +
+            `${documento.tempo_vida ? documento.tempo_vida : ""}` +
             "</h6>" +
             "</div>" +
             "</div>" +
@@ -453,15 +453,15 @@ let documents = (function (_document, $) {
 
     function appendSociosInfo(socio) {
         let pointerEvents =
-            userRole === "Administrador" && socio.EstadoDocumento !== "VALIDADO"
+            userRole === "Administrador" && socio.tempo_vida !== "VALIDADO"
                 ? "pointer-events: auto;"
                 : "pointer-events: none;";
         return $("#docs").append(
             "<div class='documents' id='doc_" +
-                socio.SocioId +
+                socio.id +
                 "'>" +
                 "<div class='card-content' id='card-content" +
-                socio.SocioId +
+                socio.id +
                 "'>" +
                 _addDocContent(socio) +
                 "</div>" +

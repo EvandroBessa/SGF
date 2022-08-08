@@ -93,12 +93,13 @@ $(function () {
 
         let nome_area = $("#nome_area").val();
         let id_municipio = $("#id_municipio option:selected").val();
-        // let estado = $("#estado option:selected").val();
+        let tipo = $("#tipo option:selected").val();
          let formType = $('#area-form')[0].dataset.formtype;
 
         let AreaFormData = {
           nome_area: nome_area,
           id_municipio: id_municipio,
+          tipo: tipo,
         };
 
         (formType === 'create') ? createArea(AreaFormData) : updateArea(AreaFormData);
@@ -200,6 +201,13 @@ $(function () {
         $('#area-form')[0].reset(); //reset form values
       });
 
+      $('.awd-close-modal').on('click', function(){
+        // remove user to change from modal on close
+        // $('#user-to-change').remove();
+
+        $('#areaanimal-form')[0].reset(); //reset form values
+      });
+
 
   function validateForm() {
     if (nome.val() == "" && nomeUtilizador.val() == "" && perfil.val() == "") {
@@ -238,10 +246,12 @@ $(function () {
 
           response.map((user, index) => {
             let editBtn = `<i class="ft-edit edit-area" data-id="${user.id}" data-name="${user.nome_area}" data-username="${user.nome_provincia}"
-                            data-profile="${user.nome_municipio}" data-status="${user.id}" data-toggle="modal" data-target="#xlarge-area" title="Editar"></i>`;
+                            data-profile="${user.nome_municipio}" data-status="${user.tipo}" data-toggle="modal" data-target="#xlarge-area" title="Editar"></i>`;
 
+            let editPwdBtn = `<i class="ft-plus-circle edit-pwd ml-1" data-id="${user.id}" data-name="${user.nome_area}" data-username="${user.nome_provincia}"
+            data-profile="${user.nome_municipio}" data-status="${user.tipo}" data-toggle="modal" data-target="#addanimal-pwd" title="Adicionar Animal"></i>`;
 
-            users.push({user, editBtn});
+            users.push({user, editBtn,editPwdBtn});
 
             // users.push({user, editBtn});
           });
@@ -286,16 +296,16 @@ $(function () {
                   { "data": "user.nome_area" },
                   { "data": "user.nome_provincia" },
                   { "data": "user.nome_municipio" },
-                  { "data": "user.id" },
+                  { "data": "user.tipo" },
                   { "data": null,
                     render: function(data, type, row, meta)
                     {
                         const { Nome } = row.user;
 
                         if(Nome === "Teste")
-                          return row.editBtn
+                          return row.editBtn+' '+row.editPwdBtn;
                         else
-                          return row.editBtn
+                          return row.editBtn+' '+row.editPwdBtn;
                     }
                   }
               ],
@@ -304,12 +314,17 @@ $(function () {
                 { "orderable": false, "targets": [4] }
               ],
               "rowCallback": function( row, data ) {
-                const { Estado } = data.user;
+                const { tipo } = data.user;
 
-                if(Estado === 'Inactivo')
-                  $('td', row).eq(3).html(`<span class="position-relative badge badge-danger badge-pill ml-2">${Estado}</span>`);
+                if(tipo === 'Público')
+                  $('td', row).eq(3).html(`<span class="position-relative badge badge-success badge-pill ml-2">${tipo}</span>`);
                 else
-                  $('td', row).eq(3).html(`<span class="position-relative badge badge-success badge-pill ml-2"> Livre </span>`);
+                    if(tipo ==='Privado') 
+                        $('td', row).eq(3).html(`<span class="position-relative badge badge-success badge-pill ml-2"> ${tipo} </span>`);
+                    else
+                        $('td', row).eq(3).html(`<span class="position-relative badge badge-success badge-pill ml-2"> ${tipo} </span>`);
+                 
+
 
                 // off('click') to prevent function from being fired multiple times
                 $('td', row).eq(4).children('i.ft-edit').off('click').on('click', function(element){
@@ -324,6 +339,18 @@ $(function () {
 
                   editArea(data);
                 }); // Edit password click event
+                $('td', row).eq(4).children('i.ft-plus-circle').off('click').on('click', function(element){
+                    let nome_area = $(this).data('name');
+  
+  
+                    // remove any previous username appended
+                    //$('#user-to-change').remove();
+  
+                    // add new username to be edited
+                    $('#areaanimal-form').append('<input type="hidden" name="user-to-change" id="user-to-change" value="'+nome_area+'"/>');
+  
+                    AddAnimalArea(data);
+                  });
               }
             });
   }
@@ -354,6 +381,22 @@ $(function () {
         $('#area-form').append(`<input type="hidden" id="edit-areaId" name="edit-areaId" value="${id}"/>`);
   }
 
+
+  function AddAnimalArea(element){
+    let id = element.user.id;
+    let name = element.user.nome_area;
+    let username = element.user.nome_provincia;
+    let profile = element.user.nome_municipio;
+    let status = $(this).data('status');
+    $('#area-form')[0].dataset.formtype = 'edit';
+
+   
+
+    $('#edit-areaId').remove();
+    // $("#user-form").attr('data-formType', 'edit');
+    $('#areaanimal-form').append(`<input type="hidden" id="area-animal" name="area-animal" value="${id}"/>`);
+}
+
   function destroyTable(){
     let areaTable = $('#area-table').DataTable();
 
@@ -378,7 +421,7 @@ $(function () {
 
     $.ajax({
         type: "GET",
-        url: "/arealistar",
+        url: "/areaccadastro",
         contentType: "application/json",
         data: JSON.stringify(),
         dataType: "json",
@@ -434,9 +477,9 @@ function appendAreaBoxes(box, index){
                             : "";
 
     let boxData =   "<div class='box_div' id='box_"+box.id+"' style='display: flex; justify-content: space-between;'>"+
-                        "<div  class='card accordion collapse-icon accordion-icon-rotate box-card w-100' data-id="+box.id+" data-name='"+box.nome_area+"''>"+
+                        "<div  class='card accordion collapse-icon accordion-icon-rotate box-card w-100' data-id="+box.id+" data-name='"+box.nome_provincia+"''>"+
                             "<a id='heading31' data-toggle='collapse' href='#accordionBTC"+index+"' aria-expanded='true' aria-controls='accordionBTC"+index+"' class='card-header bg-success bg-gradient p-1 bg-lighten-1'>"+
-                                "<div class='card-title lead white'>"+ box.nome_area +"</div>"+
+                                "<div class='card-title lead white'>"+ box.nome_provincia +"</div>"+
                             "</a>"+
                             "<div id='accordionBTC"+index+"' role='tabpanel' data-parent='#accordionCryptoTypes' aria-labelledby='heading31' class='collapse' aria-expanded='true'>"+
                                 "<div id='folder_div"+box.id+"'>" +
@@ -456,7 +499,7 @@ function _handleBoxCardClick(element) {
     console.log("DDDDDDDDDDDD",element);
 
     let boxId = element.id;
-    let boxName = element.nome_area;
+    let boxName = element.nome_provincia;
     let boxIdentifier = boxName.split('CX0000');
 
     $document.find('#form-validate').attr('data-form-val', boxName);
@@ -467,7 +510,7 @@ function _handleBoxCardClick(element) {
 
     $.ajax({
         type: "GET",
-        url: "/area-animal/" + boxId + "",
+        url: "/province-area/" + boxId + "",
         contentType: "application/json",
         data: JSON.stringify(),
         dataType: "json",
@@ -476,7 +519,7 @@ function _handleBoxCardClick(element) {
         success: function (response) {
 
            console.log('Animais: ', response);
-          if (response.length=== 1) {
+          if (response.length!= 0) {
 
             home.clearDiv('folder_div' + boxId + '');
             home.addDiv('folder_div' + boxId + '', 'folders' + boxId + '');
@@ -487,13 +530,13 @@ function _handleBoxCardClick(element) {
             response.forEach((pasta, index) => {
 
               $('#folders' + boxId + '').append(
-                "<div class='card-content folderList' data-id='" + pasta.id + "' data-name='" + pasta.nome_vulgar + "' data-folder='" + pasta.nome_vulgar + "'>" +
+                "<div class='card-content folderList' data-id='" + pasta.id + "' data-name='" + pasta.nome_area + "' data-folder='" + pasta.nome_area + "'>" +
                   "<div class='card-body p-0'>" +
                     "<div class='media-list list-group' id='box_content'>" +
                         "<div class='list-group-item list-group-item-action media p-1'>" +
                           "<a href='#' class='media-link'>" +
                             "<div class='media-left'>" +
-                              "<p class='text-bold-600 m-0' id='box_name'>" + pasta.nome_vulgar + "</p>" +
+                              "<p class='text-bold-600 m-0' id='box_name'>" + pasta.nome_area + "</p>" +
                             "</div>" +
                           "</a>" +
                       "</div>" +
@@ -541,6 +584,125 @@ function _handleBoxCardClick(element) {
 
     });
   }
+
+  //Adicionar Animal as areas de conservação
+
+  $.ajax({
+    contentType: "application/json",
+    type: "GET",
+    url: "/especielistar",
+    data: {},
+    dataType: "json",
+    async: true,
+    cache: false,
+    success: function (response) {
+        if (response != undefined) {
+            response.forEach((element) => {
+                $("#id_especie").append('<option value="' + element.id +'">' +element.nome_especie +"</option>");
+            });
+        }
+    },
+        error: function (response) {
+        console.log(response);
+    },
+
+});
+
+$("#id_especie").on("change",function (element) {
+    element.preventDefault();
+    let id_especie = $("#id_especie option:selected").val();
+
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        contentType: "application/json",
+        type: "POST",
+        url: "/especie-animal",
+        data: JSON.stringify({id_especie:id_especie}),
+        dataType: "json",
+        async: true,
+        cache: false,
+        success: function (response) {
+
+            $('#id_animal').children('option:not(:first)').remove();
+
+            if (response != undefined) {
+
+                response.forEach((element) => {
+                    $("#id_animal").append('<option  value="' + element.id +'">' +element.nome_vulgar +"</option>");
+                });
+            }
+            },
+            error: function (response) {
+            console.log(response);
+            },
+
+    });
+});
+
+$("#areaanimal-form").on("submit",function (element) {
+    element.preventDefault();
+    let id =$("#area-animal").val();
+    let quantidade = $("#quantidade").val();
+    let id_animal = $("#id_animal option:selected").val();
+     let formType = $('#area-form')[0].dataset.formtype;
+
+    let AreaFormData = {
+        id: id,
+      quantidade: quantidade,
+      id_animal: id_animal,
+    };
+
+    addAnimalArea(AreaFormData);
+});
+
+function addAnimalArea(AreaFormData){
+
+    $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $.ajax({
+        method: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(AreaFormData) ,
+        url: "/areaanimal",
+        async: true,
+        cache: false,
+        success: function (response) {
+            console.log('TESTANDO: ', response);
+
+            if (response) {
+                toastr.success(response.mensagem, "Animal Adicionado!", {
+                showMethod: "slideDown",
+                hideMethod: "slideUp",
+                timeOut: 1000,
+                onHidden: function () {
+                    //Hide modal
+                    $('.btn_no').trigger('click');
+
+                    $("#area-table tbody tr").remove();
+                    getAreas();
+                },
+
+                });
+            } else {
+                toastr.error(response.error, "Erro!", { timeOut: 5000 });
+            }
+        },
+        error: function (response) {
+        console.log(response);
+        },
+    });
+}
+
 
 
   console.log("COOKIE: ",document.cookie.indexOf('administrador'));

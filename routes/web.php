@@ -58,7 +58,10 @@ Route::post('/areaccadastrando', [AreaConservacaoController::class, 'store']);
 Route::get('/arealistar', [AreaConservacaoController::class, 'index'])->name('arealistar');
 // Route::get('/municipioslistar', [AreaConservacaoController::class, 'mlistar'])->name('municipioslistar');
 Route::post('/cadastroarea', [AreaConservacaoController::class, 'mlistar'])->name('cadastro_area');
- Route::get('/area-animal/{id}', [AreaConservacaoController::class, 'show']);
+Route::get('/province-area/{id}', [AreaConservacaoController::class, 'showArea']);
+Route::get('/area-animal/{id}', [AreaConservacaoController::class, 'show']);
+Route::post('/especie-animal', [AreaConservacaoController::class, 'especie_animal']);
+Route::post('/areaanimal', [AreaConservacaoController::class, 'add_area_animal']);
 Route::post('/updatearea', [AreaConservacaoController::class, 'update']);
 
 //Rotas do Funcionário
@@ -74,6 +77,7 @@ Route::post('/funcionario_actualizar/{id}', [FuncionarioController::class, 'upda
 Route::get('/animalcadastro', [AnimalController::class, 'formulario_animal'])->name('animalcadastro');
 Route::post('/animalcadastro', [AnimalController::class, 'salvar_animal'])->name('animalpcadastro');
 Route::get('/animal_listar', [AnimalController::class, 'listar_animal'])->name('animallistar');
+Route::get('/animal_total', [AnimalController::class, 'cont_animal']);
 
 
 //rotas de gestão de filos

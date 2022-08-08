@@ -21,6 +21,16 @@ class AnimalController extends Controller
 
     }
 
+    public function cont_animal(){
+        // $animais =Animal::all();
+
+        // return response()->json($animais);
+        
+        
+        $animais = Animal::get(['animais.nome_vulgar'])->count();
+        return response()->json($animais);
+    }
+
 
     public function salvar_animal(Request $request)
     {

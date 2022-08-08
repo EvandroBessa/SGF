@@ -192,7 +192,7 @@
                                     <div class="form-control-position" style="top: 13px !important; right: 36px !important; cursor: pointer;" id="refreshDocs">
                                         <i class="ft-refresh-ccw font-medium-4" title="Atualizar"></i>
                                     </div>
-                                    <span class="position-relative badge badge-info badge-pill ml-1" id="totalDocs"></span>
+                                    <span class="position-relative badge badge-success badge-pill ml-1" id="totalDocs"></span>
                                 </h4>
                             </div>
                             <div class="form-group position-relative mt-1">
@@ -812,7 +812,7 @@
                                                         <th>NomeArea de Conservação</th>
                                                         <th>Provincia</th>
                                                         <th>Municipio</th>
-                                                        <th>Estado</th>
+                                                        <th>Tipo</th>
                                                         <th>Op&ccedil;&otilde;es</th>
                                                     </tr>
                                                 </thead>
@@ -875,6 +875,18 @@
                                                                     <span></span>
                                                                 </div>
                                                             </div>
+                                                            <div class="form-group row">
+                                                                <div  class="col-md-12 mx-auto">
+                                                                    <label for="exampleSelectGender">Tipo</label>
+                                                                    <select class="form-control"  aria-label="Default select example" id="tipo" name="tipo" required>
+                                                                        <option id="tipo" selected disabled>Selecione o Tipo</option>
+                                                                        <option value="Público">Público</option>
+                                                                        <option value="Privado">Privado</option>
+                                                                        <option value="Misto">Misto</option>
+                                                                    </select>
+                                                                    <span></span>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="form-actions">
                                                             <button id="save-area" type="submit" class="btn btn-info" >
@@ -894,7 +906,65 @@
                         </div>
                     </div>
 
-
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <!-- Modal -->
+                            <div class="modal fade text-left" id="addanimal-pwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel16" aria-hidden="true">
+                                <div class="modal-dialog modal-l center-modal" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel16">Adicionar Animal a Área de Conservação</h4>
+                                            <button type="button" class="close awd-close-modal" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-12 col-xl-12">
+                                                    <form class="form form-horizontal" id="areaanimal-form" method="POST" data-formType="create">
+                                                        <div id='pwd-content'>
+                                                            
+                                                            <div class='form-group row'>
+                                                                <label class='col-md-12' for='nome'>Quantidade</label><br>
+                                                                <div class='col-md-12 mx-auto'>
+                                                                    <input type="number" id="quantidade" class="form-control mb-1" name ="quantidade" required>
+                                                                    <span></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-md-12 mx-auto">
+                                                                    <label for="exampleSelectGender">Espécie</label>
+                                                                    <select class="form-control"  aria-label="Default select example" id="id_especie" name="id_especie" required>
+                                                                        <option id="especies" selected disabled>Selecione a Espécie</option>
+                                                                    </select>
+                                                                    <span></span>
+                                                                </div>
+                                                                <div class="col-md-12 mx-auto">
+                                                                    <label for="exampleSelectGender">Animal</label>
+                                                                    <select class="form-control"  aria-label="Default select example" id="id_animal" name="id_animal" required>
+                                                                        <option id="animais" selected disabled>Selecione o Animal</option>
+                                                                    </select>
+                                                                    <span></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-actions">
+                                                            <button type="submit" class="btn btn-success" id="">
+                                                                <i class="la la-check-square-o"></i> Adicionar
+                                                            </button>
+                                                            <button type="button" class="btn btn-danger mr-1 closeModal awd-close-modal" data-dismiss="modal">
+                                                                <i class="ft-x"></i> Cancelar
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     {{--  Confirm box--}}
                     <div class="col-lg-4 col-md-6 col-sm-12">
@@ -1208,7 +1278,7 @@
                             <!-- Pie Simple Chart Start -->
                             <div class="card">
                                 <div class="card-body" id="global-stats-card">
-                                    <div class="card-title" id="global-stats-title">Estatísticas - Documentos Digitalizados e Verificados</div>
+                                    <div class="card-title" id="global-stats-title">Estatísticas - Animais Cadastrados </div>
 
                                     <div id="global-stats-chart"></div>
                                 </div>

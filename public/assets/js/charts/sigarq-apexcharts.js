@@ -219,6 +219,25 @@ $('#global-stats').on('click', function(element){
       // $('#user-stats-title').text('Estatísticas - Províncias');
 });
 
+// Render global
+$('#geral-stats').on('click', function(element){
+    $('#user-container').addClass('hidden');
+    $('#box-row').addClass('hidden');
+    $('#box-container').addClass('hidden');
+    $('#provinceStatsContainer').addClass('hidden');
+    $('#userStatsContainer').addClass('hidden');
+    $('#globalGraphContainer').removeClass('hidden');
+    $('#monthlyStatsContainer').addClass('hidden');
+    $('#monthlyUserStatsContainer').addClass('hidden');
+    $('#provinceUserStatsContainer').addClass('hidden');
+    $('#animal-container').addClass('hidden');
+    $('#area-container').addClass('hidden');
+
+    renderChartTotal();
+    // Set Main Title
+    // $('#user-stats-title').text('Estatísticas - Províncias');
+});
+
 // Render monthly stats
 $('#monthly-stats').on('click', function(element){
       $('#user-container').addClass('hidden');
@@ -450,7 +469,7 @@ function getTotalDigitizedByProvince(){
 
 // Render chart with database values
 function renderChartByDateVerified(date){
-  if(date){
+    if(date){
       $.ajax({
       type: "GET",
       url: "/get-validated-byDate/"+date,
@@ -764,6 +783,68 @@ function renderChartByDateDigitized(date){
     });
   }
 }
+
+function renderChartTotal(){
+    $.ajax({
+    type: "GET",
+    url: "/animal_total",
+    contentType: "application/json",
+    data: JSON.stringify(),
+    dataType: "json",
+    async: true,
+    cache: false,
+    success: function(response) {
+
+      console.log("RESPONSE:", response);
+
+        if(response != undefined){
+
+          //Empty labels
+          $labels.length = 0;
+          $totalDigitizedVerified.length = 0;
+
+          
+
+            if(!$labels.includes(response))
+              {
+                  $labels.push(response);
+                  $totalDigitizedVerified.push(response);
+              }
+        
+
+          // Remove chart
+          $('#global-stats-card > div#global-stats-chart').remove();
+          // $('.resize-triggers').remove();
+
+          // Append chart div
+          $('#global-stats-card').append(`<div id='global-stats-chart'></div>`);
+
+          // Render chart
+          renderPieChart($labels, $totalDigitizedVerified, 'global-stats-chart').render();
+
+
+        }
+
+
+        // $('.provinceBar').on('click', function(element){
+
+        //     let provinciaId = element.currentTarget.getAttribute('data-id');
+
+        //     // hideDetailsDiv();
+
+        //     $('#user-container').addClass('hidden');
+        //     $('#box-row').removeClass('hidden');
+        //     $('#box-container').addClass('hidden');
+
+        // });
+
+    },
+    error: function (response) {
+        console.log(response)
+    }
+  });
+}
+
 
 function renderChartDigitizedAndVerified(){
       $.ajax({
