@@ -15,6 +15,15 @@ class AnimalController extends Controller
     }
 
 
+    public function animal_img($id){
+        $an_img =Animal:: select('animais.imagem')
+        ->where('animais.id',$id)->get();
+        
+        return response()->json($an_img);
+    }
+
+
+
     public function especie_listar()
     {
         $especies = Especie::all();
@@ -69,6 +78,7 @@ public function animal_province(){
         $animal->nome_cientifico = $request->nome_cientifico;
         $animal->nome_vulgar = $request->nome_vulgar;
         $animal->id_especie = $request->especie;
+        $animal->imagem = $request->file;
 
         $animal-> save();
         return response()->json($animal);

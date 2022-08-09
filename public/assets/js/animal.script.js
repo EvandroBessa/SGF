@@ -54,13 +54,14 @@ $(function () {
         let nome_cientifico = $("#nome_cientifico").val();
         let nome_vulgar = $("#nome_vulgar").val();
         let especie = $("#especie option:selected").val();
-        // let estado = $("#estado option:selected").val();
-         let formType = $('#animal-form')[0].dataset.formtype;
+        let file = $("#file").val();
+        let formType = $('#animal-form')[0].dataset.formtype;
 
         let AreaFormData = {
             nome_cientifico: nome_cientifico,
             nome_vulgar: nome_vulgar,
             especie: especie,
+            file:file,
         };
 
         (formType === 'create') ? createAnimal(AreaFormData) : updateAnimal(AreaFormData);

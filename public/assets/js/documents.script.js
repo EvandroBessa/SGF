@@ -35,19 +35,21 @@ let documents = (function (_document, $) {
     // Append images on doc click
     function _appendDocumentImage(event) {
         let id = event.currentTarget.getAttribute("data-id");
-       // _loadDocuments(event);
+        _loadDocuments(event);
         $.ajax({
             type: "GET",
-            url: `/documents/image/${id}`,
+            url: `/animal_image/${id}`,
             data: {},
             dataType: "JSON",
             success: function (response) {
-                const { document } = response;
+                console.log('XXXXXX:',response);
+                // const { document } = response;
 
-                if (document.length !== 0) {
+                if (response.length !== 0) {
 
-                    document.map(({ Documento, imagem }) => {
+                    response.map(({ Documento, imagem }) => {
                          _loadDocuments(event);
+                         console.log('XXXXXX1:',imagem);
                         $document.find("#iframeContent").html(`<iframe src="data:application/pdf;base64,${imagem}" frameborder="0" width="100%" height="100%"></iframe>`);
                     });
                 }
@@ -694,12 +696,12 @@ let documents = (function (_document, $) {
         $validationForm.find("#NomeMae").val(nomeMae);
         $validationForm.find("#Orgao").val(orgao);
 
-        estadoDoc === 'NAO VALIDADO' || estadoDoc === 'EM VERIFICACAO' ? $setValidateBtn.prop('checked', false)
-          : $setValidateBtn.prop('checked', true);
+        // estadoDoc === 'NAO VALIDADO' || estadoDoc === 'EM VERIFICACAO' ? $setValidateBtn.prop('checked', false)
+        //   : $setValidateBtn.prop('checked', true);
 
-        $setValidateBtn.prop('checked') ? box.setValidatedChecked() : box.setValidatedDisabled();
+        // $setValidateBtn.prop('checked') ? box.setValidatedChecked() : box.setValidatedDisabled();
 
-        _setSociosTempStatus(docId, true, estadoDoc);
+        // _setSociosTempStatus(docId, true, estadoDoc);
       }
 
 

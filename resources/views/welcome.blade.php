@@ -503,7 +503,7 @@
                                     <div class="card-body">
                                         <h4 class="card-title">Dados do Animal</h4>
                                         <p class="card-description"></p>
-                                        <form class="forms-sample" id="animal-form" method="POST" data-formType="create">
+                                        <form class="forms-sample" id="animal-form" method="POST" data-formType="create" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
                                                 <label for="exampleInputName1">Nome Científico</label>
@@ -522,6 +522,13 @@
                                                         {{$errors->first('nome_vulgar')}}
                                                     </div>
                                                  @endif
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Select File</label>
+                                                <label id="projectinput7" class="file center-block">
+                                                    <input type="file" id="file" name="file">
+                                                    <span class="file-custom"></span>
+                                                </label>
                                             </div>
 
                                             <div class="form-group col-md-12 grid-margin stretch-card ">
@@ -566,7 +573,7 @@
                                 <div class="modal-dialog modal-xl center-modal" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" id="myModalLabel16">Validar Documento</h4>
+                                            <h4 class="modal-title" id="myModalLabel16">Visualizar Animal</h4>
                                             <button type="button" class="close resetSocioStatus" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -577,38 +584,38 @@
                                                     <form class="form form-horizontal" id="form-validate" data-form-val="">
 
                                                         <div class="form-body" id="digitalized-doc-info">
-                                                            <h4 class="form-section"><i class="ft-clipboard"></i> Informações do Documento</h4>
+                                                            <h4 class="form-section"><i class="ft-clipboard"></i> Informações do Animal</h4>
                                                         </div>
 
                                                         <div id='doc-infoContent' class="form__validate__doc__fields">
                                                             <div class='form-group row'>
-                                                                <div class="col-12"><label class='col-md-12' for='NomeAssociado'>Nome Associado</label><input type='text' id='NomeAssociado' class='form-control' name='NomeAssociado' value=''  required></div>
+                                                                <div class="col-12"><label class='col-md-12' for='NomeAssociado'>Nome Científico</label><input type='text' id='NomeAssociado' class='form-control' name='NomeAssociado' value=''  required></div>
                                                             </div>
 
                                                             <div class='form-group row'>
-                                                                <div class="col-12"><label class='col-md-12' for='NumeroInscricao'>Nº Inscrição</label><input type='number' id='NumeroInscricao' class='form-control' name='NumeroInscricao' value=''></div>
+                                                                <div class="col-12"><label class='col-md-12' for='NumeroInscricao'>Nome Vulgar</label><input type='text' id='NumeroInscricao' class='form-control' name='NumeroInscricao' value=''></div>
                                                             </div>
 
                                                             <div class='form-group row'>
-                                                                <div class="col-12"><label class='col-md-12' for='NBi'>Nº BI</label><input type='text' id='NBi' class='form-control' name='NBi' value=''></div>
+                                                                <div class="col-12"><label class='col-md-12' for='NBi'>Tempo de Vida</label><input type='text' id='NBi' class='form-control' name='NBi' value=''></div>
                                                             </div>
 
                                                             <div class='form-group row'>
                                                                 <div class="col-12"><label class='col-md-12' for='Orgao'>Org&atilde;o</label><input type='text' id='Orgao' class='form-control' name='Orgao' value=''></div>
                                                             </div>
 
-                                                            <div class='form-group row'>
+                                                            {{-- <div class='form-group row'>
                                                                 <div class="col-12"><label class='col-md-12' for='NomePai'>Nome do Pai</label><input type='text' id='NomePai' class='form-control' name='NomePai' value=''></div>
                                                             </div>
 
                                                             <div class='form-group row'>
                                                                 <div class="col-12"><label class='col-md-12' for='NomeMae'>Nome da M&atilde;e</label><input type='text' id='NomeMae' class='form-control' name='NomeMae' value=''></div>
-                                                            </div>
+                                                            </div> --}}
 
                                                         </div>
 
                                                         {{--  Validation btn  --}}
-                                                        <div class="dropdown show form-group row col-md-2">
+                                                        {{-- <div class="dropdown show form-group row col-md-2">
                                                             <div class="dropdown-menu show dropdown-demo" style="height: 55px !important;">
                                                                 <div class="dropdown-item">
                                                                     <span class="float-right">
@@ -618,10 +625,10 @@
                                                                     <label for="switchery2" class="card-title">Validado</label>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
 
                                                         <div class="form-actions">
-                                                            <button type="submit" class="btn btn-info" id="validate-btn">
+                                                            <button type="submit" class="btn btn-success" id="validate-btn">
                                                                 <i class="la la-check-square-o"></i> Salvar
                                                             </button>
                                                             <button type="button" class="btn btn-danger mr-1 resetSocioStatus" data-dismiss="modal">
@@ -923,7 +930,7 @@
                                                 <div class="col-12 col-xl-12">
                                                     <form class="form form-horizontal" id="areaanimal-form" method="POST" data-formType="create">
                                                         <div id='pwd-content'>
-                                                            
+
                                                             <div class='form-group row'>
                                                                 <label class='col-md-12' for='nome'>Quantidade</label><br>
                                                                 <div class='col-md-12 mx-auto'>
