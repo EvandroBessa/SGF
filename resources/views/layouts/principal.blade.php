@@ -81,7 +81,7 @@
     <div id="sgq-app-loading-page" class="d-flex align-items-center justify-content-center flex-column" style="position: fixed; width: 100%; height: 100%; left: 0; top: 0;">
         <img class="sgq-lp-app-logo animated fadeInDown" src="{{asset("assets/img/logo7.png")}}"/>
         <span class="sgq-lp-app-spinner animated zoomIn">
-            <i class="sgq-lp-app-spinner-animated mt-1 spinner-border text-info"></i>
+            <i class="sgq-lp-app-spinner-animated mt-1 spinner-border text-success"></i>
         </span>
     </div>
     <div id="sigarq-app" style="height: calc(100vh - 115px);">
@@ -418,7 +418,7 @@
     <script src="{{asset("app-assets/js/scripts/modal/components-modal.js")}}"></script>
     {{-- <script src="{{asset("js/scripts/ui/jquery-ui/date-pickers.js")}}"></script> --}}
     {{-- <script src="{{asset("app-assets/js/scripts/ui/scrollable.js")}}"></script> --}}
-    {{-- <script src="{{asset("js/scripts/animation/animation.js")}}"></script> --}}
+    {{-- <script src="{{asset("app-assets/js/scripts/animation/animation.js")}}"></script> --}}
     <!-- END: Theme JS-->
 
     {{--  jQuery Plugins --}}

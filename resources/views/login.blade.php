@@ -96,10 +96,10 @@
                                                 </fieldset>
 
                                                 <div class="form-group mb-0">
-                                                    <button type="submit" class="sgq-login-button btn btn-primary btn-block"><i class="ft-unlock"></i> Autenticar </button>
+                                                    <button type="submit" class="sgq-login-button btn btn-primary btn-block bt-login"><i class="ft-unlock"></i> Autenticar </button>
                                                     <span class="sgq-loading-status d-none align-items-center justify-content-center flex-column mt-2 w-100">
                                                         <p class="sgq-ls-text w-100 text-center">Autenticando...</p>
-                                                        <i class="sgq-ls-spinner spinner-border text-primary"></i>
+                                                        <i class="sgq-ls-spinner spinner-border text-success"></i>
                                                     </span>
                                                 </div>
 
@@ -119,7 +119,7 @@
 
                                 <div class="card-body text-center m-0">
                                     {{--  <img src="../../../assets/img/Logo_Interdigitos_2020_Horizontal_Colorido.png" style="max-height: 68px"/>  --}}
-                                    <p class="m-0 d-block">Copyright &copy;2022 UAN. <br>Equipa de Dev <i class="la la-code text-primary" style="font-size: 1.4em;position: relative;top: 3px;font-weight: 600;"></i></code></p>
+                                    <p class="m-0 d-block">Copyright &copy;2022 UAN. <br>Equipa de Dev <i class="la la-code text-success" style="font-size: 1.4em;position: relative;top: 3px;font-weight: 600;"></i></code></p>
                                 </div>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
         <script src="{{asset("vendors/js/extensions/toastr.min.js")}}"></script>
         <script src="{{asset("js/scripts/extensions/toastr.js")}}"></script>
         {{-- <script src="{{asset("js/core/libraries/jquery.min.js")}}"></script> --}}
-       
+
         {{--  <script src="../../../app-assets/js/core/libraries/jquery.min.js"></script>  --}}
         {{-- <script src="{{asset("js/core/libraries/jquery.slim.js")}}"></script> --}}
          {{-- <script src="{{asset("js/core/libraries/jquery.min.js")}}"></script> --}}

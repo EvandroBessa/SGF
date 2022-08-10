@@ -1,9 +1,46 @@
 /* Bootstrap: configs */
-.btn-primary {
+/* .btn-primary {
+    border-color: #0f5a37 !important;
+    background-color: #0f5a37 !important;
+    color: #FFFFFF;
+} */
+
+
+/* .bt-login{
     border-color: #0f5a37 !important;
     background-color: #0f5a37 !important;
     color: #FFFFFF;
 }
+
+.bt-login:hover{
+    border-color: #00c066 !important;
+    background-color: #00c066 !important;
+    color: #FFFFFF;
+} */
+
+.bt-login {
+    color: #fff;
+    background-color: #0f5a37 !important;
+    border-color: #0f5a37 !important; }
+    .bt-login:hover {
+      color: #fff;
+      background-color: #00c066 !important;
+      border-color: #00c066 !important; }
+    .bt-login:focus, .bt-login.focus {
+      box-shadow: 0 0 0 0.2rem rgba(125, 235, 158, 0.5) !important; }
+    .bt-login.disabled, .bt-login:disabled {
+      color: #fff;
+      background-color: #0f5a37 !important;
+      border-color: #0f5a37 !important; }
+    .bt-login:not(:disabled):not(.disabled):active, .bt-login:not(:disabled):not(.disabled).active,
+    .show > .btn-primary.dropdown-toggle {
+      color: #fff;
+      background-color: #3a44e1 !important;
+      border-color: #2f39e0 !important; }
+      .bt-login:not(:disabled):not(.disabled):active:focus, .bt-login:not(:disabled):not(.disabled).active:focus,
+      .show > .bt-login.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.2rem rgba(125, 132, 235, 0.5) !important; }
+
 
 .text-primary {
     color: #0667dd !important;
@@ -32,4 +69,5 @@
     height: 32px !important;
     border-style: solid !important;
     border-width: 0.25em !important;
+    color: #0f5a37 !important;
 }
