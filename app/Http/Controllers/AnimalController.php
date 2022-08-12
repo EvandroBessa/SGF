@@ -18,7 +18,7 @@ class AnimalController extends Controller
     public function animal_img($id){
         $an_img =Animal:: select('animais.imagem')
         ->where('animais.id',$id)->get();
-        
+
         return response()->json($an_img);
     }
 
@@ -43,16 +43,23 @@ public function animal_province(){
     ->join('provincias','provincias.id','=','municipios.id_provincia')
     ->select('provincias.nome_provincia',DB::raw('COUNT(*) AS Total '))
     ->groupBy('provincias.nome_provincia')->get();
-    
+
     return response()->json($Animal_p);
 }
     public function cont_animal(){
         // $animais =Animal::all();
 
         // return response()->json($animais);
-        
-        
-        $animais = Animal::get(['animais.nome_vulgar'])->count();
+        // $valor = 2500;
+        // DB::select("SELECT juros FROM parcelas WHERE $valor BETWEEN valor_min AND valor_max");
+
+        $animais= DB::select("SELECT ('Total Cadastrados') Designacao, count(*) as Total  FROM animais
+        UNION ALL select ('Adicionados nas Areas de Conservaçao') Designacao,  count(*) as Total from animais,animal_areas WHERE animais.id =animal_areas.id_animal");
+
+        // select ('Total Verificado') Designacao, count(*) as total from socios where EstadoDocumento = 'VALIDADO'
+        //       UNION ALL select ('Total Digitalizado') Designacao, count(*) as total from socios
+
+        // $animais = Animal::get(['animais.nome_vulgar'])->count();
         return response()->json($animais);
     }
 
@@ -78,7 +85,7 @@ public function animal_province(){
         $animal->nome_cientifico = $request->nome_cientifico;
         $animal->nome_vulgar = $request->nome_vulgar;
         $animal->id_especie = $request->especie;
-        $animal->imagem = $request->file;
+        $animal->imagem = $request->imagem;
 
         $animal-> save();
         return response()->json($animal);

@@ -186,6 +186,20 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     height: 48px;
     color: #0f5a37 !important;
 }
+
+.tabela-utilizador{
+    background-color: #0f5a37 !important;
+}
+
+.tabela-area{
+    background-color: #0f5a37 !important;
+    border: #0f5a37 !important;
+}
+
+
+.btt-save{
+    background-color: #0f5a37 !important;
+}
 /* END: Loading App CSS */
 
 #sigarq-app {
@@ -241,7 +255,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 	color: #000;
 	font-size: 2em;
 	font-weight: bolder;
-    text-align: center; 
+    text-align: center;
 }
 .input-font-bolder {
 	color: #000;
@@ -259,7 +273,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 	color: #000;
 	font-size: 2em;
 	font-weight: bolder;
-    
+
 }
 
 .apexcharts-tooltip, .apexcharts-xaxistooltip, .apexcharts-menu-item, .apexcharts-yaxistooltip {

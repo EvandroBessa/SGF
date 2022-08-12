@@ -375,7 +375,7 @@ $('#date_verified').on('change', function(element){
   const date = $(this).val();
   const adminDigit = element.currentTarget.getAttribute('admin-dig');
 
-  adminDigit ? renderChartByDateDigitized(date) : renderChartByDateVerified(date);
+ // adminDigit ? renderChartByDateDigitized(date) : renderChartByDateVerified(date);
 });
 
  // Filter graph by year verified
@@ -387,7 +387,7 @@ $('#date_verified').on('change', function(element){
 
   adminDigit ? $('#monthly-stats-title').text('Estatísticas - Digitalizados Por Mês') : null;
 
-  renderChartVerifiedDigitizedMonthly(year);
+  //renderChartVerifiedDigitizedMonthly(year);
 })
 
 function getTotalValidatedByProvince(){
@@ -820,20 +820,21 @@ function renderChartTotal(){
 
       console.log("RESPONSE:", response);
 
-        if(response != undefined){
+      if(response != undefined){
 
-          //Empty labels
-          $labels.length = 0;
-          $totalDigitizedVerified.length = 0;
+        //Empty labels
+        $labels.length = 0;
+        $totalDigitizedVerified.length = 0;
 
-          
+        response.map(totalVerifiedDigitized => {
+            console.log("RESPONSE:", totalVerifiedDigitized);
 
-            if(!$labels.includes(response))
-              {
-                  $labels.push(response);
-                  $totalDigitizedVerified.push(response);
-              }
-        
+          if(!$labels.includes(totalVerifiedDigitized.Designacao))
+            {
+                $labels.push(totalVerifiedDigitized.Designacao);
+                $totalDigitizedVerified.push(totalVerifiedDigitized.Total);
+            }
+        });
 
           // Remove chart
           $('#global-stats-card > div#global-stats-chart').remove();

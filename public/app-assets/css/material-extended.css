@@ -827,6 +827,11 @@ select.form-control:not([size]):not([multiple]).input-sm {
   .media-list .list-group-item:hover .list-group-item-text {
     color: #fff; }
 
+.lst-animal:hover {
+        background: #96d6ba !important;
+
+        color: #000 !important;}
+
 .media-list .list-group-item .media-link:hover {
   text-decoration: none;
   color: #fff;

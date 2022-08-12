@@ -146,6 +146,11 @@
                             <span class="menu-title" data-i18n="Crypto Dashboard">WorkSpace</span>
                         </a>
                     </li>
+                    <li >
+                        <a href="#">
+                            
+                        </a>
+                    </li>
 
                     <li class=" nav-item"><a href="#"><i class="la la-globe"></i><span class="menu-title" data-i18n="Material Components">Áreas de Conservação</span></a>
                         <ul class="menu-content">

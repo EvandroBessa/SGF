@@ -104,7 +104,7 @@ let documents = (function (_document, $) {
                                     <div class="row">
                                         <div class="col-5 pr-0">
                                             <div class="btn-group w-50 mb-2">
-                                                <button type="button" class="btn btn-info text-uppercase h-4">Filtrar</button>
+                                                <button type="button" class="btn btn-info text-uppercase h-4" style='background-color: #0f5a37 !important;'>Filtrar</button>
                                                 <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item doc-status" id='get-validated' filter-type='validated' href="#">Validado</a>
@@ -173,8 +173,8 @@ let documents = (function (_document, $) {
                                     <div class="row">
                                         <div class="col-5 pr-0">
                                             <div class="btn-group w-50 mb-2">
-                                                <button type="button" class="btn btn-success text-uppercase h-4">Filtrar</button>
-                                                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
+                                                <button type="button" class="btn btn-success text-uppercase h-4 "  style='background-color: #0f5a37 !important;'>Filtrar</button>
+                                                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"  style='background-color: #0f5a37 !important;' data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr-only">Toggle Dropdown</span></button>
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item doc-status" id='get-validated' folderId='${folderId}' filter-type='validated' href="#">Validado</a>
                                                     <a class="dropdown-item doc-status" filter-type='not_validated' href="#">Não Validado</a>
@@ -184,7 +184,7 @@ let documents = (function (_document, $) {
                                         </div>
                                         <div class="col pl-0">
                                             <div class="w-100 bg-white pl-1 rounded d-flex align-items-center mb-2" style="height: 40px">
-                                                <span>Total de Animais <strong id="filterTotalDoc" class="bg-success text-white rounded font-weight-normal" style="padding: 4px;">---</strong> </span>
+                                                <span>Total de Animais <strong id="filterTotalDoc" class="bg-success text-white rounded font-weight-normal" style="background-color: #0f5a37 !important; padding: 4px;">---</strong> </span>
                                             </div>
                                         </div>
                                     </div>
@@ -246,7 +246,7 @@ let documents = (function (_document, $) {
         $confirmDiv.append(
             `<input type='hidden' id='remDocProvince' value='${docProvince}'/>`
         );
-        $document.find("#confirmTitle").text("Eliminando Documento");
+        $document.find("#confirmTitle").text("Eliminando Animal");
     }
 
     function _removeDoc() {
@@ -421,7 +421,7 @@ let documents = (function (_document, $) {
             "' " + " data-Orgao='" + `${documento.tempo_vida ? documento.tempo_vida : ""}` +
             "' data-toggle='modal' data-target='#xlarge' > " + "<div class='media-list list-group' id='docs_content" +
             documento.id + "'>" +
-            "<div class='list-group-item list-group-item-action media p-1'>" +
+            "<div class='list-group-item list-group-item-action lst-animal media p-1'>" +
             "<div class='media-left'>" +
             "<p class='text-bold-600 m-0' id='doc_name'>" + `${documento.nome_vulgar}` + "</p>" +
             "<h6 class='font-small-2 text-muted mb-0' id='doc_name'>" +

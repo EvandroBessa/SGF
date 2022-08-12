@@ -319,11 +319,11 @@ $(function () {
                 if(tipo === 'Público')
                   $('td', row).eq(3).html(`<span class="position-relative badge badge-success badge-pill ml-2">${tipo}</span>`);
                 else
-                    if(tipo ==='Privado') 
+                    if(tipo ==='Privado')
                         $('td', row).eq(3).html(`<span class="position-relative badge badge-success badge-pill ml-2"> ${tipo} </span>`);
                     else
                         $('td', row).eq(3).html(`<span class="position-relative badge badge-success badge-pill ml-2"> ${tipo} </span>`);
-                 
+
 
 
                 // off('click') to prevent function from being fired multiple times
@@ -341,14 +341,14 @@ $(function () {
                 }); // Edit password click event
                 $('td', row).eq(4).children('i.ft-plus-circle').off('click').on('click', function(element){
                     let nome_area = $(this).data('name');
-  
-  
+
+
                     // remove any previous username appended
                     //$('#user-to-change').remove();
-  
+
                     // add new username to be edited
                     $('#areaanimal-form').append('<input type="hidden" name="user-to-change" id="user-to-change" value="'+nome_area+'"/>');
-  
+
                     AddAnimalArea(data);
                   });
               }
@@ -390,7 +390,7 @@ $(function () {
     let status = $(this).data('status');
     $('#area-form')[0].dataset.formtype = 'edit';
 
-   
+
 
     $('#edit-areaId').remove();
     // $("#user-form").attr('data-formType', 'edit');
@@ -478,7 +478,7 @@ function appendAreaBoxes(box, index){
 
     let boxData =   "<div class='box_div' id='box_"+box.id+"' style='display: flex; justify-content: space-between;'>"+
                         "<div  class='card accordion collapse-icon accordion-icon-rotate box-card w-100' data-id="+box.id+" data-name='"+box.nome_provincia+"''>"+
-                            "<a id='heading31' data-toggle='collapse' href='#accordionBTC"+index+"' aria-expanded='true' aria-controls='accordionBTC"+index+"' class='card-header bg-success bg-gradient p-1 bg-lighten-1'>"+
+                            "<a id='heading31' data-toggle='collapse' href='#accordionBTC"+index+"' aria-expanded='true' aria-controls='accordionBTC"+index+"' class='card-header bg-success bg-gradient p-1 bg-lighten-1' style='background-color: #0f5a37 !important;'>"+
                                 "<div class='card-title lead white'>"+ box.nome_provincia +"</div>"+
                             "</a>"+
                             "<div id='accordionBTC"+index+"' role='tabpanel' data-parent='#accordionCryptoTypes' aria-labelledby='heading31' class='collapse' aria-expanded='true'>"+
@@ -536,7 +536,7 @@ function _handleBoxCardClick(element) {
                         "<div class='list-group-item list-group-item-action media p-1'>" +
                           "<a href='#' class='media-link'>" +
                             "<div class='media-left'>" +
-                              "<p class='text-bold-600 m-0' id='box_name'>" + pasta.nome_area + "</p>" +
+                              "<p class='text-bold-600 m-0' id='box_name' style='color:#000000 !important;'>" + pasta.nome_area + "</p>" +
                             "</div>" +
                           "</a>" +
                       "</div>" +
@@ -552,7 +552,7 @@ function _handleBoxCardClick(element) {
             home.clearDiv('folder_div' + boxId + '');
             home.addDiv('folder_div' + boxId + '', 'folders' + boxId + '');
 
-            $document.find('#folders' + boxId).append(`<h1>Não existe(m) Animais(s) nesta Area de Conservaçao</h3>`);
+            $document.find('#folders' + boxId).append(`<h1>Não existe(m) Areas de Conservaçao nesta Provincia</h3>`);
             // toastr.warning('Não existe(m) Pasta(s) nesta Caixa', 'Aviso!', { "timeOut": 2500 });
 
             home.clearDiv('accordionCrypto'); //LIMPAR A DIV QUE EXIBE OS DOCS QUANDO NÃO EXISTE

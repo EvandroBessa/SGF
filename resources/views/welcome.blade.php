@@ -147,7 +147,7 @@
                                     <div class="form-control-position" style="top: -9px !important; cursor: pointer;" id="refreshBoxes">
                                         <i class="ft-refresh-ccw font-medium-4" title="Atualizar"></i>
                                     </div>
-                                    <span class="position-relative badge badge-success badge-pill ml-1" id="totalProvince"></span>
+                                    <span class="position-relative badge badge-success badge-pill ml-1" style="background-color: #0f5a37 !important;" id="totalProvince"></span>
 
 
                                 </h4>
@@ -192,7 +192,7 @@
                                     <div class="form-control-position" style="top: 13px !important; right: 36px !important; cursor: pointer;" id="refreshDocs">
                                         <i class="ft-refresh-ccw font-medium-4" title="Atualizar"></i>
                                     </div>
-                                    <span class="position-relative badge badge-success badge-pill ml-1" id="totalDocs"></span>
+                                    <span class="position-relative badge badge-success badge-pill ml-1" style="background-color: #0f5a37 !important;" id="totalDocs"></span>
                                 </h4>
                             </div>
                             <div class="form-group position-relative mt-1">
@@ -523,7 +523,10 @@
                                                     </div>
                                                  @endif
                                             </div>
-
+                                            <div class="mb-3">
+                                                <label for="formFile" class="form-label">Adicione a Imagem do Animal</label>
+                                                <input class="form-control" type="file" id="imagem" name="imagem">
+                                              </div>
                                             <div class="form-group col-md-12 grid-margin stretch-card ">
                                                 <label for="exampleSelectGender">Especie</label>
                                                 <select class="form-control {{$errors->has('especie') ? 'is-invalid' : ''}}"  id="especie" name="especie">
@@ -537,7 +540,7 @@
                                                 @endif
                                             </div>
                                             <div class="form-actions">
-                                                <button type="submit" class="btn btn-success" id="validate-btn">
+                                                <button type="submit" class="btn btn-success" style="background: #0f5a37 !important;" id="validate-btn">
                                                     <i class="la la-check-square-o"></i> Salvar
                                                 </button>
                                                 <button type="button" class="btn btn-danger mr-1 " data-dismiss="modal">
@@ -566,7 +569,7 @@
                                 <div class="modal-dialog modal-xl center-modal" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h4 class="modal-title" id="myModalLabel16">Validar Documento</h4>
+                                            <h4 class="modal-title" id="myModalLabel16">Visualizar Animal</h4>
                                             <button type="button" class="close resetSocioStatus" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -577,7 +580,7 @@
                                                     <form class="form form-horizontal" id="form-validate" data-form-val="">
 
                                                         <div class="form-body" id="digitalized-doc-info">
-                                                            <h4 class="form-section"><i class="ft-clipboard"></i> Informações do Documento</h4>
+                                                            <h4 class="form-section"><i class="ft-clipboard"></i> Informações do Animal</h4>
                                                         </div>
 
                                                         <div id='doc-infoContent' class="form__validate__doc__fields">
@@ -586,46 +589,29 @@
                                                             </div>
 
                                                             <div class='form-group row'>
-                                                                <div class="col-12"><label class='col-md-12' for='NumeroInscricao'>Nº Inscrição</label><input type='number' id='NumeroInscricao' class='form-control' name='NumeroInscricao' value=''></div>
+                                                                <div class="col-12"><label class='col-md-12' for='NumeroInscricao'>Nº Inscrição</label><input type='text' id='NumeroInscricao' class='form-control' name='NumeroInscricao' value=''></div>
                                                             </div>
 
                                                             <div class='form-group row'>
-                                                                <div class="col-12"><label class='col-md-12' for='NBi'>Nº BI</label><input type='text' id='NBi' class='form-control' name='NBi' value=''></div>
+                                                                <div class="col-12"><label class='col-md-12' for='NBi'>Tempo de Vida</label><input type='text' id='NBi' class='form-control' name='NBi' value=''></div>
                                                             </div>
 
                                                             <div class='form-group row'>
-                                                                <div class="col-12"><label class='col-md-12' for='Orgao'>Org&atilde;o</label><input type='text' id='Orgao' class='form-control' name='Orgao' value=''></div>
+                                                                <div class="col-12"><label class='col-md-12' for='Orgao'>Area de Conservaçao</label><input type='text' id='Orgao' class='form-control' name='Orgao' value=''></div>
                                                             </div>
 
-                                                            <div class='form-group row'>
-                                                                <div class="col-12"><label class='col-md-12' for='NomePai'>Nome do Pai</label><input type='text' id='NomePai' class='form-control' name='NomePai' value=''></div>
-                                                            </div>
 
-                                                            <div class='form-group row'>
-                                                                <div class="col-12"><label class='col-md-12' for='NomeMae'>Nome da M&atilde;e</label><input type='text' id='NomeMae' class='form-control' name='NomeMae' value=''></div>
-                                                            </div>
 
                                                         </div>
 
                                                         {{--  Validation btn  --}}
-                                                        <div class="dropdown show form-group row col-md-2">
-                                                            <div class="dropdown-menu show dropdown-demo" style="height: 55px !important;">
-                                                                <div class="dropdown-item">
-                                                                    <span class="float-right">
-                                                                        <input type="checkbox" name="switchery" id="switchery2" class="switchery-xs"/>
-                                                                        <span class="danger mb-1">*</span>
-                                                                    </span>
-                                                                    <label for="switchery2" class="card-title">Validado</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
 
                                                         <div class="form-actions">
                                                             <button type="submit" class="btn btn-info" id="validate-btn">
-                                                                <i class="la la-check-square-o"></i> Salvar
+                                                                <i class="la la-check-square-o"></i> Mais Detalhes
                                                             </button>
                                                             <button type="button" class="btn btn-danger mr-1 resetSocioStatus" data-dismiss="modal">
-                                                                <i class="ft-x"></i> Cancelar
+                                                                <i class="ft-x"></i>Fechar
                                                             </button>
                                                         </div>
                                                     </form>
@@ -661,7 +647,7 @@
                                     <div class="card-content">
                                         <div class="table-responsive">
                                             <table class="table table-striped table-bordered" id="user-table" width="100%">
-                                                <thead class="bg-success white">
+                                                <thead class="tabela-utilizador bg-success white">
                                                     <tr>
                                                         <th>Nome</th>
                                                         <th>Nome Utilizador</th>
@@ -801,13 +787,13 @@
                                         <h4 class="card-title">Áreas de Conservação</h4>
                                         <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                         <div class="heading-elements" id="addArea-modal">
-                                            <span id="add-area" class="h4" data-toggle="modal" data-target="#xlarge-area"><i class="ft-plus-circle info" title="Adicionar"></i> Adicionar</span>
+                                            <span id="add-area" class="h4" data-toggle="modal" data-target="#xlarge-area"><i class="ft-plus-circle" style="color: #0f5a37 !important;" title="Adicionar"></i> Adicionar</span>
                                         </div>
                                     </div>
                                     <div class="card-content">
                                         <div class="table-responsive">
                                             <table class="table table-striped table-bordered" id="area-table" width="100%">
-                                                <thead class="bg-success white">
+                                                <thead class="tabela-area bg-success white">
                                                     <tr>
                                                         <th>NomeArea de Conservação</th>
                                                         <th>Provincia</th>
@@ -889,7 +875,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-actions">
-                                                            <button id="save-area" type="submit" class="btn btn-info" >
+                                                            <button id="save-area" type="submit" class=" btt-save btn btn-success" style="background-color: #0f5a37 !important;" >
                                                                 <i class="la la-check-square-o"></i> Salvar
                                                             </button>
                                                             <button type="button" class="btn btn-danger mr-1 btn_no pwd-close-modal" data-dismiss="modal" id="userModal-cancel">
@@ -923,7 +909,7 @@
                                                 <div class="col-12 col-xl-12">
                                                     <form class="form form-horizontal" id="areaanimal-form" method="POST" data-formType="create">
                                                         <div id='pwd-content'>
-                                                            
+
                                                             <div class='form-group row'>
                                                                 <label class='col-md-12' for='nome'>Quantidade</label><br>
                                                                 <div class='col-md-12 mx-auto'>
@@ -949,7 +935,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-actions">
-                                                            <button type="submit" class="btn btn-success" id="">
+                                                            <button type="submit" class="btn btn-success" style="background-color: #0f5a37 !important;" id="">
                                                                 <i class="la la-check-square-o"></i> Adicionar
                                                             </button>
                                                             <button type="button" class="btn btn-danger mr-1 closeModal awd-close-modal" data-dismiss="modal">
@@ -974,7 +960,7 @@
                                 <div class="modal-dialog modal-l center-modal" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <i class="la la-warning warning" style='font-size: 25px; margin-right: 5px;'></i><h4 class="modal-title" id="confirmTitle" style='font-weight: bold;'>Eliminando documento</h4>
+                                            <i class="la la-warning warning" style='font-size: 25px; margin-right: 5px;'></i><h4 class="modal-title" id="confirmTitle" style='font-weight: bold;'>Eliminando Animal</h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
@@ -985,7 +971,7 @@
                                                     <p>Deseja continuar?</p>
                                                 </div>
                                                 <div class="col-12 col-xl-12">
-                                                    <button type="button" class="btn btn-info w-25" id="btn_yes">SIM</button>
+                                                    <button type="button" class="btn btn-success w-25" id="btn_yes" style="background:#0f5a37 !important">SIM</button>
                                                     <button type="button" class="btn btn-danger w-25 btn_no" data-dismiss="modal">NÃO</button>
                                                 </div>
                                             </div>

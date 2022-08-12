@@ -681,7 +681,8 @@ footer .ft-heart:before {
 
 .main-menu.menu-dark .navigation>li.open>a {
     color: #c3c3c3;
-    border-right: 4px solid #1e9ff2;
+     border-right: 4px solid #c3c3c3; 
+    background: #424e58;
 }
 
 .main-menu.menu-dark .navigation>li.open>li.hover>a {
